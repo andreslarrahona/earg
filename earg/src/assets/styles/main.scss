@@ -1,0 +1,38 @@
+$color-1: #e7dfdc;
+$color-2: #162570;
+$color-3:#ffffff;
+$color-4:#000000;
+$color-5:#094c00;
+$font-main: 'Montserrat', sans-serif;
+$font-regular: 400;
+$font-semibold: 600;
+$font-bold: 700;
+$breakpoint-mobile: 768px;
+
+@mixin padding-x($value) {
+  padding-left: $value;
+  padding-right: $value;
+}
+@mixin margin-x($value) {
+  margin-left: $value;
+  margin-right: $value;
+}
+
+:root {
+  font-family: $font-main;
+  line-height: 1.5;
+  font-weight: $font-regular;
+
+  color: $color-3;
+  background-color: $color-4;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+*{
+  padding:0;
+  margin:0;
+}
