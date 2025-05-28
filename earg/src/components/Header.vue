@@ -1,9 +1,18 @@
 <script setup>
 import { ref } from 'vue'
 
-defineProps({
-  //msg: String,
-})
+const lineasMenu = ref(true)
+const extensionMenu = ref(true)
+const serviciosMenu = ref(true)
+const toggleLineasMenu = () => {
+    lineasMenu.value = !lineasMenu.value
+}
+const toggleExtensionMenu = () => {
+    extensionMenu.value = !extensionMenu.value
+}
+const toggleServiciosMenu = () => {
+    serviciosMenu.value = !serviciosMenu.value
+}
 
 </script>
 
@@ -13,12 +22,55 @@ defineProps({
     <nav>
         <router-link class="cont-logo" to="/"><img src="@/assets/images/logos/logo10.png"></router-link>
         <div>
-            <router-link to="/"><p>Acerca de</p></router-link>
-            <router-link to="/atmosfericas"><p>Ciencias atmosféricas</p></router-link>
-            <router-link to="/astronomia"><p>Astronomía</p></router-link>
-            <router-link to="/tierra"><p>Ciencias de la tierra</p></router-link>
-            <router-link to="/"><p>Información útil</p></router-link>
-            <router-link to="/"><p>Servicios</p></router-link>
+            <router-link to="/"><p>Acerca de la EARG</p></router-link>
+            <router-link to="/">
+                <div class="lista-menu" @click="toggleLineasMenu">
+                    <p>Líneas de trabajo <span style="font-size:0.8em;padding-left:0.2em;">∨</span></p>
+                    <ul :class="{'lineas-menu': lineasMenu}">
+                        <li value="" disabled selected hidden></li>
+                        <li value="investigacion">Sismología</li>
+                        <li value="produccion">Atmósfera superior</li>
+                        <li value="marketing">Astronomía</li>
+                        <li value="soporte">Geodesia</li>
+                        <li value="gestion">Meteorología</li>
+                        <li value="gestion">Meteoros</li>
+                        <li value="gestion">Geofísica aplicada</li>
+                    </ul>
+                </div>
+            </router-link>
+            <router-link to="/">
+                
+                <div class="lista-menu" @click="toggleExtensionMenu">
+                    <p>Extension <span style="font-size:0.8em;padding-left:0.2em;">∨</span></p>
+                    <ul :class="{'extension-menu': extensionMenu}">
+                        <li value="" disabled selected hidden></li>
+                        <li value="investigacion">Sismología</li>
+                        <li value="produccion">Atmósfera superior</li>
+                        <li value="marketing">Astronomía</li>
+                        <li value="soporte">Geodesia</li>
+                        <li value="gestion">Meteorología</li>
+                        <li value="gestion">Meteoros</li>
+                        <li value="gestion">Geofísica aplicada</li>
+                    </ul>
+                </div>
+
+            </router-link>
+            <router-link to="/">
+                <div class="lista-menu" @click="toggleServiciosMenu">
+                    <p>Servicios <span style="font-size:0.8em;padding-left:0.2em;">∨</span></p>
+                    <ul :class="{'servicios-menu': serviciosMenu}">
+                        <li value="" disabled selected hidden></li>
+                        <li value="investigacion">Sismología</li>
+                        <li value="produccion">Atmósfera superior</li>
+                        <li value="marketing">Astronomía</li>
+                        <li value="soporte">Geodesia</li>
+                        <li value="gestion">Meteorología</li>
+                        <li value="gestion">Meteoros</li>
+                        <li value="gestion">Geofísica aplicada</li>
+                    </ul>
+                </div>
+            </router-link>
+            <router-link to="/"><p class="btn btn-1">Contacto</p></router-link>
         </div>
     </nav>
     <div class="cont-titulo-seccion">
@@ -61,7 +113,9 @@ header {
                 opacity:0.9;
             }
         }
+
         &>div{
+
             display:flex;
             // border:solid green 1px;
             gap:1em;
@@ -74,13 +128,45 @@ header {
                 cursor:pointer;
                 transition:all 0.2s;
                 // border:solid red 1px;
+                z-index:10;
                 &:hover{
                     text-shadow: 2px 2px 5px $color-3;
                     scale:0.95;
-
                 }
 
             }
+            .lista-menu{
+                position:relative;
+                cursor:pointer;
+                .lineas-menu, .extension-menu, .servicios-menu{
+                    display:none;
+                }
+                
+                &>ul{
+                    position:absolute;
+                    top:100%;
+                    left:0;
+                    width:100%;
+                    background-color:$color-3;
+                    color:$color-4;
+                    padding:0;
+                    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+                    list-style:none;
+                    z-index:10;
+
+                    li{
+                        padding:0.5em 1em;
+                        cursor:pointer;
+                        font-size:0.8em;
+                        &:hover{
+                            background-color:$color-4;
+                            color:$color-3;
+                        }
+                    }
+                }
+            }
+
+            
             
         }
     }
@@ -99,6 +185,5 @@ header {
         }
     }
 }
-
 
 </style>
