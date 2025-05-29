@@ -1,31 +1,94 @@
 <script setup>
-import { ref } from 'vue'
+import { ref, onMounted, computed, onBeforeUnmount } from 'vue'
+
+const backgroundImages = ref([
+  'src/assets/images/ai2.png',
+  'src/assets/images/polosur.jpg',
+  'src/assets/images/ai.png'
+]);
+
+const currentImageIndex = ref(0);
+let carouselInterval; // Variable para almacenar el ID del intervalo
+
+// Propiedad computada que devuelve la URL de la imagen actual
+const currentBackgroundImage = computed(() => {
+  return `url(${backgroundImages.value[currentImageIndex.value]})`;
+});
+
+const changeBackgroundImage = () => {
+  currentImageIndex.value = (currentImageIndex.value + 1) % backgroundImages.value.length;
+};
+
 
 const lineasMenu = ref(true)
 const extensionMenu = ref(true)
 const serviciosMenu = ref(true)
-const toggleLineasMenu = () => {
-    lineasMenu.value = !lineasMenu.value
-}
-const toggleExtensionMenu = () => {
-    extensionMenu.value = !extensionMenu.value
-}
-const toggleServiciosMenu = () => {
-    serviciosMenu.value = !serviciosMenu.value
+
+const toggleLineasMenu = (event) => {
+  event.stopPropagation()
+  lineasMenu.value = !lineasMenu.value
+  // Cierra los otros menús cuando se abre este
+  extensionMenu.value = true
+  serviciosMenu.value = true
 }
 
+const toggleExtensionMenu = (event) => {
+  event.stopPropagation()
+  extensionMenu.value = !extensionMenu.value
+  // Cierra los otros menús cuando se abre este
+  lineasMenu.value = true
+  serviciosMenu.value = true
+}
+
+const toggleServiciosMenu = (event) => {
+  event.stopPropagation()
+  serviciosMenu.value = !serviciosMenu.value
+  // Cierra los otros menús cuando se abre este
+  lineasMenu.value = true
+  extensionMenu.value = true
+}
+
+// Función para cerrar los menús si el clic es fuera
+const closeMenusOnClickOutside = (event) => {
+  const lineasMenuElement = document.getElementById('lineas').closest('.lista-menu')
+  const extensionMenuElement = document.getElementById('extension').closest('.lista-menu')
+  const serviciosMenuElement = document.getElementById('servicios').closest('.lista-menu')
+
+  if (lineasMenuElement && !lineasMenuElement.contains(event.target)) {
+    lineasMenu.value = true
+  }
+  if (extensionMenuElement && !extensionMenuElement.contains(event.target)) {
+    extensionMenu.value = true
+  }
+  if (serviciosMenuElement && !serviciosMenuElement.contains(event.target)) {
+    serviciosMenu.value = true
+  }
+}
+
+// Agrega el event listener cuando el componente está montado
+onMounted(() => {
+    document.addEventListener('click', closeMenusOnClickOutside)
+    carouselInterval = setInterval(changeBackgroundImage, 2000); // Cambia cada 5 segundos
+
+})
+
+// Remueve el event listener antes de que el componente se desmonte
+onBeforeUnmount(() => {
+    clearInterval(carouselInterval);
+    document.removeEventListener('click', closeMenusOnClickOutside)
+})
 </script>
 
 <template>
 
-  <header>
+<header :style="{ backgroundImage: currentBackgroundImage }">
     <nav>
         <router-link class="cont-logo" to="/"><img src="@/assets/images/logos/logo10.png"></router-link>
         <div>
             <router-link to="/"><p>Acerca de la EARG</p></router-link>
             <router-link to="/">
                 <div class="lista-menu" @click="toggleLineasMenu">
-                    <p>Líneas de trabajo <span style="font-size:0.8em;padding-left:0.2em;">∨</span></p>
+                    <p id="lineas">Líneas de trabajo <span style="font-size:0.8em;padding-left:0.2em;">∨</span></p>
                     <ul :class="{'lineas-menu': lineasMenu}">
                         <li value="" disabled selected hidden></li>
                         <li value="investigacion">Sismología</li>
@@ -41,7 +104,7 @@ const toggleServiciosMenu = () => {
             <router-link to="/">
                 
                 <div class="lista-menu" @click="toggleExtensionMenu">
-                    <p>Extension <span style="font-size:0.8em;padding-left:0.2em;">∨</span></p>
+                    <p id="extension">Extension <span style="font-size:0.8em;padding-left:0.2em;">∨</span></p>
                     <ul :class="{'extension-menu': extensionMenu}">
                         <li value="" disabled selected hidden></li>
                         <li value="investigacion">Sismología</li>
@@ -57,7 +120,7 @@ const toggleServiciosMenu = () => {
             </router-link>
             <router-link to="/">
                 <div class="lista-menu" @click="toggleServiciosMenu">
-                    <p>Servicios <span style="font-size:0.8em;padding-left:0.2em;">∨</span></p>
+                    <p id="servicios">Servicios <span style="font-size:0.8em;padding-left:0.2em;">∨</span></p>
                     <ul :class="{'servicios-menu': serviciosMenu}">
                         <li value="" disabled selected hidden></li>
                         <li value="investigacion">Sismología</li>
@@ -83,8 +146,9 @@ const toggleServiciosMenu = () => {
 <style lang="scss">
 @import "@/assets/styles/main.scss";
 header {
-    background-image:url('@/assets/images/ai.png');
+    transition: background-image 1s ease-in-out; 
     background-size: cover;
+    background-repeat: no-repeat;
     background-position:0 -200px;
     height:100vh;
     width:100vw;
