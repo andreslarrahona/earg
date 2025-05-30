@@ -1,11 +1,28 @@
 <script setup>
-import { ref, onMounted, onBeforeUnmount } from 'vue'
+import { ref, onMounted, computed, onBeforeUnmount } from 'vue'
+
+const backgroundImages = ref([
+  'src/assets/images/ai2.png',
+  'src/assets/images/polosur.jpg',
+  'src/assets/images/ai.png'
+]);
+
+const currentImageIndex = ref(0);
+let carouselInterval; // Variable para almacenar el ID del intervalo
+
+// Propiedad computada que devuelve la URL de la imagen actual
+const currentBackgroundImage = computed(() => {
+  return `url(${backgroundImages.value[currentImageIndex.value]})`;
+});
+
+const changeBackgroundImage = () => {
+  currentImageIndex.value = (currentImageIndex.value + 1) % backgroundImages.value.length;
+};
+
 
 const lineasMenu = ref(true)
 const extensionMenu = ref(true)
 const serviciosMenu = ref(true)
-
-
 
 const toggleLineasMenu = (event) => {
   event.stopPropagation()
@@ -51,11 +68,13 @@ const closeMenusOnClickOutside = (event) => {
 // Agrega el event listener cuando el componente está montado
 onMounted(() => {
     document.addEventListener('click', closeMenusOnClickOutside)
+    carouselInterval = setInterval(changeBackgroundImage, 2000); // Cambia cada 5 segundos
 
 })
 
 // Remueve el event listener antes de que el componente se desmonte
 onBeforeUnmount(() => {
+    clearInterval(carouselInterval);
     document.removeEventListener('click', closeMenusOnClickOutside)
 })
 </script>
@@ -64,7 +83,7 @@ onBeforeUnmount(() => {
 
 <header :style="{ backgroundImage: currentBackgroundImage }">
     <nav>
-        <router-link class="cont-logo" to="/"><img src="@/assets/images/logos/logo9.png"></router-link>
+        <router-link class="cont-logo" to="/"><img src="@/assets/images/logos/logo10.png"></router-link>
         <div>
             <router-link to="/"><p>Acerca de la EARG</p></router-link>
             <router-link to="/">
@@ -127,14 +146,11 @@ onBeforeUnmount(() => {
 <style lang="scss">
 @import "@/assets/styles/main.scss";
 header {
-    // transition: background-image 1s ease-in-out; 
-    // background-size: cover;
-    // background-repeat: no-repeat;
-    // background-position:0 -200px;
-    // background-image:url('@/assets/images/polosur.jpg');
-    background-color:$color-1;
-    color:$color-2;
-    height:15vh;
+    transition: background-image 1s ease-in-out; 
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position:0 -200px;
+    height:100vh;
     width:100vw;
     overflow:hidden;
 
