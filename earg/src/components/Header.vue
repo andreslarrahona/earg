@@ -67,21 +67,20 @@ onBeforeUnmount(() => {
         <router-link class="cont-logo" to="/"><img src="@/assets/images/logos/logo9.png"></router-link>
         <div>
             <router-link to="/"><p>Acerca de la EARG</p></router-link>
-            <router-link to="/">
+            
                 <div class="lista-menu" @click="toggleLineasMenu">
                     <p id="lineas">Líneas de trabajo <span style="font-size:0.8em;padding-left:0.2em;">∨</span></p>
                     <ul :class="{'lineas-menu': lineasMenu}">
                         <li value="" disabled selected hidden></li>
-                        <li value="investigacion">Sismología</li>
-                        <li value="produccion">Atmósfera superior</li>
-                        <li value="marketing">Astronomía</li>
-                        <li value="soporte">Geodesia</li>
-                        <li value="gestion">Meteorología</li>
-                        <li value="gestion">Meteoros</li>
-                        <li value="gestion">Geofísica aplicada</li>
+                        <router-link to="/Sismologia"><li value="sismologia">Sismología</li></router-link>
+                        <router-link to="/Atmosfera"><li value="atmosfera">Atmósfera superior</li></router-link>
+                        <router-link to="/Astronomia"><li value="astronomia">Astronomía</li></router-link>
+                        <router-link to="/Geodesia"><li value="geodesia">Geodesia</li></router-link>
+                        <router-link to="/Metrologia"><li value="meteorologia">Meteorología</li></router-link>
+                        <router-link to="/Meteoros"><li value="meteoros">Meteoros</li></router-link>
+                        <router-link to="/Geofisica"><li value="geofisica">Geofísica aplicada</li></router-link>
                     </ul>
                 </div>
-            </router-link>
             <router-link to="/">
                 
                 <div class="lista-menu" @click="toggleExtensionMenu">
@@ -118,25 +117,23 @@ onBeforeUnmount(() => {
         </div>
     </nav>
     <div class="cont-titulo-seccion">
-        <img src="@/assets/images/logos/logo1.png">
+        <img src="@/assets/images/logos/logo3.png">
     </div>
   </header>
   
 </template>
 
-<style lang="scss">
+<style scoped lang="scss">
 @import "@/assets/styles/main.scss";
 header {
-    // transition: background-image 1s ease-in-out; 
-    // background-size: cover;
-    // background-repeat: no-repeat;
-    // background-position:0 -200px;
-    // background-image:url('@/assets/images/polosur.jpg');
     background-color:$color-1;
     color:$color-2;
-    height:15vh;
+    height:35vh;
     width:100vw;
-    overflow:hidden;
+    max-width:100vw;
+    overflow-y:visible;
+
+    
 
     nav{
         height:15vh;
@@ -155,6 +152,7 @@ header {
             &:hover{
                 scale:0.9;
             }
+
             // border:dotted red 1px;
             img{
                 max-height:100%;
@@ -168,6 +166,8 @@ header {
             // border:solid green 1px;
             gap:1em;
             align-items:center;
+            a:link, a:visited{text-decoration:none;}
+
             p{
                 // border:solid blue 1px;
                 width:10em;
@@ -178,9 +178,10 @@ header {
                 // border:solid red 1px;
                 z-index:10;
                 &:hover{
-                    text-shadow: 2px 2px 5px $color-3;
+                    text-shadow: 2px 2px 2px $color-2;
                     scale:0.95;
                 }
+                
 
             }
             .lista-menu{
@@ -220,16 +221,17 @@ header {
     }
     .cont-titulo-seccion{
         width:100%;
-        height: 85vh;
+        height: 10vh;
+        margin-top:20vh;
         display:flex;
         align-items:center;
         justify-content:center;
         img{
             opacity:0.9;
-            width:50%;
+            width:10%;
             min-width:500px;
             max-width:700px;
-            margin-bottom:30vh;
+            margin-bottom:37vh;
         }
     }
 }
