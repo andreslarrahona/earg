@@ -197,7 +197,7 @@ const config = {
     }
     &:hover{
       scale:0.95;
-      box-shadow: 2px 2px 15px rgba(255, 255, 255, 0.4s);
+      box-shadow: 2px 2px 15px rgba(255, 255, 255, 0.4);
     }
 
     &>p{
