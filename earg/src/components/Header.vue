@@ -81,38 +81,35 @@ onBeforeUnmount(() => {
                         <router-link to="/Geofisica"><li value="geofisica">Geofísica aplicada</li></router-link>
                     </ul>
                 </div>
-            <router-link to="/">
+            
                 
                 <div class="lista-menu" @click="toggleExtensionMenu">
                     <p id="extension">Extension <span style="font-size:0.8em;padding-left:0.2em;">∨</span></p>
                     <ul :class="{'extension-menu': extensionMenu}">
                         <li value="" disabled selected hidden></li>
-                        <li value="investigacion">Sismología</li>
-                        <li value="produccion">Atmósfera superior</li>
-                        <li value="marketing">Astronomía</li>
-                        <li value="soporte">Geodesia</li>
-                        <li value="gestion">Meteorología</li>
-                        <li value="gestion">Meteoros</li>
-                        <li value="gestion">Geofísica aplicada</li>
+                        <router-link to="/Sismologia"><li value="sismologia">Sismología</li></router-link>
+                        <router-link to="/Atmosfera"><li value="atmosfera">Atmósfera superior</li></router-link>
+                        <router-link to="/Astronomia"><li value="astronomia">Astronomía</li></router-link>
+                        <router-link to="/Geodesia"><li value="geodesia">Geodesia</li></router-link>
+                        <router-link to="/Metrologia"><li value="meteorologia">Meteorología</li></router-link>
+                        <router-link to="/Meteoros"><li value="meteoros">Meteoros</li></router-link>
+                        <router-link to="/Geofisica"><li value="geofisica">Geofísica aplicada</li></router-link>
                     </ul>
                 </div>
-
-            </router-link>
-            <router-link to="/">
                 <div class="lista-menu" @click="toggleServiciosMenu">
                     <p id="servicios">Servicios <span style="font-size:0.8em;padding-left:0.2em;">∨</span></p>
                     <ul :class="{'servicios-menu': serviciosMenu}">
                         <li value="" disabled selected hidden></li>
-                        <li value="investigacion">Sismología</li>
-                        <li value="produccion">Atmósfera superior</li>
-                        <li value="marketing">Astronomía</li>
-                        <li value="soporte">Geodesia</li>
-                        <li value="gestion">Meteorología</li>
-                        <li value="gestion">Meteoros</li>
-                        <li value="gestion">Geofísica aplicada</li>
+                        <router-link to="/Sismologia"><li value="sismologia">Sismología</li></router-link>
+                        <router-link to="/Atmosfera"><li value="atmosfera">Atmósfera superior</li></router-link>
+                        <router-link to="/Astronomia"><li value="astronomia">Astronomía</li></router-link>
+                        <router-link to="/Geodesia"><li value="geodesia">Geodesia</li></router-link>
+                        <router-link to="/Metrologia"><li value="meteorologia">Meteorología</li></router-link>
+                        <router-link to="/Meteoros"><li value="meteoros">Meteoros</li></router-link>
+                        <router-link to="/Geofisica"><li value="geofisica">Geofísica aplicada</li></router-link>
                     </ul>
                 </div>
-            </router-link>
+            
             <router-link to="/"><p class="btn btn-1">Contacto</p></router-link>
         </div>
     </nav>
@@ -185,8 +182,6 @@ header {
                     text-shadow: 2px 2px 2px $color-1;
                     scale:0.95;
                 }
-                
-
             }
             .lista-menu{
                 position:relative;
@@ -211,16 +206,14 @@ header {
                         padding:0.5em 1em;
                         cursor:pointer;
                         font-size:0.8em;
+                        color:$color-4;
                         &:hover{
                             background-color:$color-4;
                             color:$color-3;
                         }
                     }
                 }
-            }
-
-            
-            
+            }     
         }
     }
     .cont-titulo-seccion{
