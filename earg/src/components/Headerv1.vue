@@ -62,9 +62,9 @@ onBeforeUnmount(() => {
 
 <template>
 
-<header>
+<header :style="{ backgroundImage: currentBackgroundImage }">
     <nav>
-        <router-link class="cont-logo" to="/"><img src="@/assets/images/logos/logo7.png"></router-link>
+        <router-link class="cont-logo" to="/"><img src="@/assets/images/logos/logo9.png"></router-link>
         <div>
             <router-link to="/"><p style="margin-right:1.5em;">Acerca de la EARG</p></router-link>
             
@@ -117,7 +117,7 @@ onBeforeUnmount(() => {
         </div>
     </nav>
     <div class="cont-titulo-seccion">
-        <img src="@/assets/images/logos/logo1.png">
+        <img src="@/assets/images/logos/logo3.png">
     </div>
   </header>
   
@@ -126,17 +126,14 @@ onBeforeUnmount(() => {
 <style scoped lang="scss">
 @import "@/assets/styles/main.scss";
 header {
-    background:none;
-    color:$color-3;
+    background-color:$color-1;
+    color:$color-2;
     height:35vh;
     width:100vw;
     max-width:100vw;
     overflow-y:visible;
-    // border-bottom:solid 3px $color-1;
-    background-image:
-        linear-gradient(to bottom, rgba(0,0,0,0), rgba(0,0,0,1)),
-        url('../assets/images/R.jpg');
 
+    
 
     nav{
         height:15vh;
@@ -178,11 +175,10 @@ header {
                 text-align:center;
                 cursor:pointer;
                 transition:all 0.2s;
-                color:$color-3;
                 // border:solid red 1px;
                 z-index:10;
                 &:hover{
-                    text-shadow: 2px 2px 2px $color-1;
+                    text-shadow: 2px 2px 2px $color-2;
                     scale:0.95;
                 }
                 
@@ -237,7 +233,6 @@ header {
             max-width:700px;
             margin-bottom:37vh;
         }
-
     }
 }
 

@@ -39,12 +39,11 @@ const config = {
 .carousel {
   --vc-nav-background: rgba(255, 255, 255, 0.7);
   --vc-nav-border-radius: 100%;
-  height:65vh;
-  background-color:$color-1;
-  color:$color-2;
-  padding-bottom:10vh;
-  
-  
+  height:66vh;
+  background-color:$color-4;
+  color:$color-3;
+  padding-top:2vh;
+  padding-bottom:8vh;
 
 
 }
