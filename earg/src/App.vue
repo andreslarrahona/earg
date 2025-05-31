@@ -1,5 +1,4 @@
 <script setup>
-import Main from '@/components/Main.vue'
 import Header from '@/components/Header.vue'
 import Footer from '@/components/Footer.vue'
 
@@ -7,9 +6,9 @@ import Footer from '@/components/Footer.vue'
 
 <template>
   <Header />
-  <Main>
+  <main>
     <router-view />   
-  </Main>
+  </main>
   <Footer />
 </template>
 
