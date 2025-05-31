@@ -23,7 +23,7 @@ const config = {
   <div class="carousel">
     <Carousel v-bind="config">
       <Slide v-for="image in images" :key="image.id">
-        <img :src="image.url" alt="image" />
+        <img class="img-carousel" :src="image.url" alt="image" />
       </Slide>
 
       <template #addons>
@@ -56,6 +56,24 @@ const config = {
     </div>
     
   </div>
+  <div class="cont-mas-links">
+      <router-link to="/Geodesia" class="card card1">
+        <img src="@/assets/images/geoide.jpg">
+        <div class="sombra-card"></div>
+        <p>Modelo de geoide</p>
+      </router-link>    
+      <router-link to="/Sitios" class="card card1">
+        <img src="@/assets/images/cadic.jpg">
+        <div class="sombra-card"></div>
+        <p>Sitios de interés</p>
+      </router-link> 
+      <router-link to="/Didactico" class="card card1">
+        <img src="@/assets/images/escuelas.jpg">
+        <div class="sombra-card"></div>
+        <p>Material didáctico para escuelas</p>
+      </router-link> 
+  </div>
+
 </template>
 
 <style scoped lang="scss">
@@ -73,7 +91,7 @@ const config = {
 
 }
 
-img {
+.img-carousel {
   border-radius: 8px;
   width: 100%;
   height: 100%;
@@ -89,6 +107,7 @@ img {
   gap: 2em;
   padding-top:2em;
   background-color: $color-1;
+  padding-bottom:1em;
   
   a{
     padding: 1em 2em;
@@ -135,15 +154,29 @@ img {
   
 }
 .cont-btn-historia{
-  height:10em;
+  height:5em;
   width:100vw;
   display:flex;
   justify-content: center;
   align-items: center;
   padding:2em 0;
-  //background-image:url(../assets/images/trama.png);
-
   background-color: $color-4;
+  position: relative; 
+  &::before {
+      content: ""; // Necesario para pseudo-elementos
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: url(../assets/images/trama2.png);
+      background-size: auto; // Opcional: ajusta la imagen para cubrir el área
+      background-repeat: repeat;
+      background-position: center; // Opcional: centra la imagen
+      opacity: 0.2; // La opacidad del 20%
+      z-index: 0; // Asegura que esté debajo del contenido del div
+    }
+  
   a{
     padding: 1em 2em;
     font-size:1.5em;
@@ -155,6 +188,8 @@ img {
     justify-content:space-between;
     align-items:center;
     transition:all 0.3s;
+    position:relative;
+    z-index:1;
 
     &:link, &:visited, &:hover, &:active {
       text-decoration: none;
@@ -162,7 +197,7 @@ img {
     }
     &:hover{
       scale:0.95;
-      box-shadow: 2px 2px 15px rgba(0, 0, 0, 0.6);
+      box-shadow: 2px 2px 15px rgba(255, 255, 255, 0.4);
     }
 
     &>p{
@@ -173,5 +208,57 @@ img {
   }
   
   
+}
+.cont-mas-links{
+  width:100vw;
+  height:40vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:2em;
+  @include padding-y(2em);
+  .card{
+    height:90%;
+    width:300px;
+    position:relative;
+    background-color:$color-4;
+    align-content:center;
+    transition:all 0.3s;
+    &:hover{
+      scale:0.95;
+      box-shadow:5px 5px 10px rgba(0,0,0,0.3);
+    }
+    &>div{
+      z-index:1;
+      background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, $color-4 100%);
+      width:100%;
+      height:100%;
+      opacity:1;
+      position:absolute;
+      top:0;
+      left:0;
+      overflow: hidden;
+    }
+    &>img{
+      width:100%;
+      height:100%;
+      opacity:1;
+      object-fit: cover;
+      z-index:0;
+    }
+    &>p{
+      position:absolute;
+      bottom:1em;
+      width:100%;
+      text-align:center;
+      z-index:2;
+      color:$color-3;
+      font-weight:$font-semibold;
+      &:hover, &:focus, &:visited{
+        color:$color-3;
+        text-decoration:none;
+      }
+    }
+  }
 }
 </style>
