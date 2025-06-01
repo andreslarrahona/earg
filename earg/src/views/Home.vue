@@ -46,15 +46,13 @@ const config = {
         <i class="fa-solid fa-arrow-right"></i>
       </router-link>
     </div>
-  </div>
-  <div class="cont-btn-historia">
     <div>
-      <router-link to="/Meteorologia" class="btn btn-primary">
-        <p>Conoce nuestra historia</p>
+      <router-link to="/Meteorologia" class="btn btn-primary lastcard ">
+        <img src="@/assets/images/iconos/estacion.png" alt="Historia">
+        <p>Conocé nuestra Historia</p>
         <i class="fa-solid fa-arrow-right"></i>
       </router-link>
     </div>
-    
   </div>
   <div class="cont-mas-links">
       <router-link to="/Geodesia" class="card card1">
@@ -107,11 +105,12 @@ const config = {
   gap: 2em;
   padding-top:2em;
   background-color: $color-1;
-  padding-bottom:1em;
-  
+  padding-bottom:0;
+  position:relative;
+
   a{
     padding: 1em 2em;
-    width:12em;
+    width:calc(300px - 4em);
     background-color:$color-2;
     color:$color-3;
     border-radius: 5px;
@@ -141,7 +140,7 @@ const config = {
       top: 50%;
       // transform: translateY(-50%);
       border-radius: 50%;
-      background-color: $color-3;
+      background-color: $color-1;
       color: $color-2;
       padding: 0.5em;
     }
@@ -150,6 +149,7 @@ const config = {
       font-weight: $font-semibold;
     }
   }
+  .lastcard{background-color:$color-5;}
   
   
 }
@@ -160,29 +160,29 @@ const config = {
   justify-content: center;
   align-items: center;
   padding:2em 0;
-  background-color: $color-4;
+  background-color: $color-1;
   position: relative; 
-  &::before {
-      content: ""; // Necesario para pseudo-elementos
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-image: url(../assets/images/trama2.png);
-      background-size: auto; // Opcional: ajusta la imagen para cubrir el área
-      background-repeat: repeat;
-      background-position: center; // Opcional: centra la imagen
-      opacity: 0.2; // La opacidad del 20%
-      z-index: 0; // Asegura que esté debajo del contenido del div
-    }
+  // &::before {
+  //     content: ""; // Necesario para pseudo-elementos
+  //     position: absolute;
+  //     top: 0;
+  //     left: 0;
+  //     width: 100%;
+  //     height: 100%;
+  //     background-image: url(../assets/images/trama2.png);
+  //     background-size: auto; // Opcional: ajusta la imagen para cubrir el área
+  //     background-repeat: repeat;
+  //     background-position: center; // Opcional: centra la imagen
+  //     opacity: 0.1; // La opacidad del 20%
+  //     z-index: 0; // Asegura que esté debajo del contenido del div
+  //   }
   
   a{
     padding: 1em 2em;
     font-size:1.5em;
     width:19em;
-    background-color:$color-1;
-    color:$color-4;
+    background-color:$color-5;
+    color:$color-1;
     border-radius: 5px;
     display:flex;
     justify-content:space-between;
@@ -193,7 +193,7 @@ const config = {
 
     &:link, &:visited, &:hover, &:active {
       text-decoration: none;
-      color:$color-4;
+      color:$color-1;
     }
     &:hover{
       scale:0.95;
@@ -216,8 +216,11 @@ const config = {
   align-items:center;
   justify-content:center;
   gap:2em;
-  @include padding-y(2em);
-  .card{
+  background-color:$color-1;
+  position:relative;
+  padding-bottom:1em;
+    .card{
+    
     height:90%;
     width:300px;
     position:relative;
