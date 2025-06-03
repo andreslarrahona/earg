@@ -83,6 +83,7 @@
     <div class="seccion">
       <div class="cont-img-full">
         <img id="fagnano" src="@/assets/images/fagnano2.png" />
+        <div class="pin" id="pin-1"><p>i</p></div>
       </div>
     </div>
   </section>
@@ -209,9 +210,37 @@ section {
     }
 
     .cont-img-full {
-      width: 100%;
+      width: 100vw;
+      position: relative;
       img {
         width: 100%;
+      }
+      .pin {
+        position: absolute;
+        width: 40px;
+        height: 40px;
+        background-color: $color-1;
+        transform: rotate(45deg);
+        box-shadow: 5px 5px 10px $color-4;
+        cursor: pointer;
+        transition: all 0.3s;
+        &:hover {
+          margin-top: -0.7em;
+          box-shadow: 0.7em 0.7em 10px $color-4;
+        }
+        p {
+          font-style: italic;
+          transform: rotate(-45deg);
+          text-align: center;
+          width: 50%;
+          justify-self: center;
+          font-weight: bold;
+          margin-bottom: -0.5em;
+        }
+      }
+      #pin-1 {
+        top: 35%;
+        left: 5%;
       }
     }
   }
