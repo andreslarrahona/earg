@@ -48,6 +48,37 @@
           <img src="@/assets/images/fotos/12.jpg" />
         </div>
       </div>
+      <hr />
+      <div class="texto-2col">
+        <div class="col-texto">
+          <p>
+            La EARG remide regularmente esta red a los efectos de estudiar su
+            estabilidad y ensayar diferentes métodos de medición y
+            procesamiento. Estas remediciones revisten especial interés pues
+            Tierra del Fuego es la única provincia argentina que trasciende la
+            Placa Sudamericana, tal como se observa en el mapa de la derecha.
+          </p>
+          <p>
+            Se puede apreciar que la zona al sur del Lago Fagnano pertenece a la
+            Placa de Scotia. El procesamiento de las mediciones efectuadas desde
+            1993 sugiere la existencia de un desplazamiento relativo de más de 5
+            mm/año en el período considerado
+            <i
+              >(Del Cogliano et al., 2000 resumen disponible, Perdomo et al.,
+              2002, Hormaechea et al., 2004).</i
+            >
+          </p>
+        </div>
+        <div class="col-img" id="mapa-geodesia">
+          <div id="sombra-geodesia">
+            <p>
+              AMPLIAR
+              <i style="margin-left: 0.5em" class="fa-solid fa-expand"></i>
+            </p>
+          </div>
+          <img src="@/assets/images/geodesia.jpg" />
+        </div>
+      </div>
     </div>
     <div class="seccion">
       <div class="cont-img-full">
@@ -65,7 +96,9 @@ section {
 
   .seccion {
     width: 100vw;
-
+    hr {
+      margin: 1em 10vw 2em 5vw;
+    }
     .titulo-seccion {
       display: flex;
       max-height: 3em;
@@ -73,6 +106,7 @@ section {
       justify-content: space-between;
       padding: 2em 3em;
       h1 {
+        margin-left: 0.5em;
         font-size: 2.3em;
       }
       .img-titulo {
@@ -80,6 +114,7 @@ section {
         max-height: 100%;
         text-align: right;
         padding-right: 3em;
+        width: 300px;
         a {
           transition: all 0.3s;
           cursor: pointer;
@@ -100,22 +135,75 @@ section {
       gap: 20px;
       align-items: start;
       padding-bottom: 2em;
+      height: auto;
+      margin: 0 3vw;
       .col-texto {
         flex: 3;
+        text-align: justify;
         p {
-          padding: 0.5em 3em;
+          padding: 0.5em 1em;
+          text-indent: 1em;
         }
       }
       .col-img {
         flex: 2;
       }
       #img-geodesia {
-        height: 350px;
         align-content: center;
         text-align: center;
+        align-self: center;
         img {
-          height: 90%;
+          width: 25vw;
+          min-width: 350px;
           object-fit: contain;
+        }
+      }
+      #mapa-geodesia {
+        height: 100%;
+        max-height: 200px;
+        overflow: hidden;
+        align-self: center;
+        width: calc(25vw - 100px);
+        min-width: 350px;
+        align-content: center;
+        text-align: center;
+        border-radius: 8px;
+        position: relative;
+        cursor: pointer;
+        margin: 0;
+
+        &:hover p {
+          scale: 0.95;
+        }
+        &:hover img {
+          opacity: 0.3;
+        }
+        #sombra-geodesia {
+          position: absolute;
+          width: 100%;
+          left: 0;
+          height: 100%;
+          border-radius: 8px;
+          background-color: rgba(231, 223, 220, 0.3);
+          color: rgb(74, 74, 66);
+          font-size: 30px;
+          text-justify: center;
+          align-content: center;
+          z-index: 10;
+
+          p {
+            transition: all 0.3s;
+          }
+        }
+        img {
+          max-height: 100%;
+          width: 25vw;
+          min-width: 350px;
+          border-radius: 8px;
+          opacity: 0.7;
+          transition: all 0.3s;
+          object-fit: cover;
+          object-position: 0 -20px;
         }
       }
     }
