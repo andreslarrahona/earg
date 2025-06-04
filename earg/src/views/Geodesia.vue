@@ -84,6 +84,17 @@
       <div class="cont-img-full">
         <img id="fagnano" src="@/assets/images/fagnano2.png" />
         <div class="pin" id="pin-1"><p><i class="fa-solid fa-camera"></i></p></div>
+        <div class="pin" id="pin-2"><p><i class="fa-solid fa-camera"></i></p></div>
+        <div class="pin" id="pin-3"><p><i class="fa-solid fa-camera"></i></p></div>
+        <div class="pin" id="pin-4"><p><i class="fa-solid fa-camera"></i></p></div>
+        <div class="pin" id="pin-5"><p><i class="fa-solid fa-camera"></i></p></div>
+        <div class="pin" id="pin-6"><p><i class="fa-solid fa-camera"></i></p></div>
+        <div class="pin" id="pin-7"><p><i class="fa-solid fa-camera"></i></p></div>
+        <div class="pin" id="pin-8"><p><i class="fa-solid fa-camera"></i></p></div>
+        <div class="pin" id="pin-9"><p><i class="fa-solid fa-camera"></i></p></div>
+        <div class="pin" id="pin-10"><p><i class="fa-solid fa-camera"></i></p></div>
+        <div class="pin" id="pin-11"><p><i class="fa-solid fa-camera"></i></p></div>
+        <div class="pin" id="pin-12"><p><i class="fa-solid fa-camera"></i></p></div>
       </div>
     </div>
   </section>
@@ -235,9 +246,11 @@ section {
         transition: all 0.3s;
         outline: 1px solid $color-6; /* El borde que quieres ver */
         outline-offset: -3px;
+        opacity:0.4;
         &:hover {
           margin-top: -0.7em;
           box-shadow: 0.7em 0.7em 10px $color-4;
+          opacity:1;
         }
         p {
           font-style: italic;
@@ -253,10 +266,18 @@ section {
           opacity:0.9;
         }
       }
-      #pin-1 {
-        top: 35%;
-        left: 5%;
-      }
+      #pin-1 {top: 35%;left: 5%;}
+      #pin-2 {top: 40%;left: 22%;}
+      #pin-3 {top: 32%;left: 50%;}
+      #pin-4 {top: 38%;left: 64%;}
+      #pin-5 {top: 34%;left: 79%;}
+      #pin-6 {top: 43%;left: 80%;}
+      #pin-7 {top: 56%;left: 66%;}
+      #pin-8 {top: 53%;left: 54%;}
+      #pin-9 {top: 53%;left: 33%;}
+      #pin-10 {top: 56%;left: 24%;}
+      #pin-11 {top: 54%;left: 18%;}
+      #pin-12 {top: 49%;left: 10%;}
     }
   }
 }
