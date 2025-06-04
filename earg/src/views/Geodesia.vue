@@ -83,7 +83,7 @@
     <div class="seccion">
       <div class="cont-img-full">
         <img id="fagnano" src="@/assets/images/fagnano2.png" />
-        <div class="pin" id="pin-1"><p>i</p></div>
+        <div class="pin" id="pin-1"><p><i class="fa-solid fa-camera"></i></p></div>
       </div>
     </div>
   </section>
@@ -186,7 +186,7 @@ section {
           height: 100%;
           border-radius: 8px;
           background-color: rgba(231, 223, 220, 0.3);
-          color: rgb(74, 74, 66);
+          color: $color-6;
           font-size: 30px;
           text-justify: center;
           align-content: center;
@@ -212,18 +212,29 @@ section {
     .cont-img-full {
       width: 100vw;
       position: relative;
+      height: 0; /* Necesario cuando uso padding-bottom para controlar la altura */
+      padding-bottom: 42.26%; /* Valor para mantener la relación de aspecto */
+      overflow: hidden;
       img {
         width: 100%;
+        position:absolute;
+        top:0;
+        left:0;
+        height:100%;
+        object-fit:cover;
+        display: block;
       }
       .pin {
         position: absolute;
         width: 40px;
         height: 40px;
         background-color: $color-1;
-        transform: rotate(45deg);
+        transform: translate(-50%, -50%) rotate(45deg); 
         box-shadow: 5px 5px 10px $color-4;
         cursor: pointer;
         transition: all 0.3s;
+        outline: 1px solid $color-6; /* El borde que quieres ver */
+        outline-offset: -3px;
         &:hover {
           margin-top: -0.7em;
           box-shadow: 0.7em 0.7em 10px $color-4;
@@ -235,7 +246,11 @@ section {
           width: 50%;
           justify-self: center;
           font-weight: bold;
-          margin-bottom: -0.5em;
+          position:absolute;
+          top:0.4em;
+          left:0.6em;
+          color:$color-6;
+          opacity:0.9;
         }
       }
       #pin-1 {
