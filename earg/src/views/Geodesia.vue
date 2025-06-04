@@ -1,4 +1,24 @@
-<script setup></script>
+<script setup>
+import {ref} from 'vue';
+
+const puntosMapa = ref([
+'@/assets/images/puntos/01.jpg',
+'@/assets/images/puntos/02.jpg',
+'@/assets/images/puntos/03.jpg',
+'@/assets/images/puntos/04.jpg',
+'@/assets/images/puntos/05.jpg',
+'@/assets/images/puntos/06.jpg',
+'@/assets/images/puntos/07.jpg',
+'@/assets/images/puntos/08.jpg',
+'@/assets/images/puntos/09.jpg',
+'@/assets/images/puntos/10.jpg',
+'@/assets/images/puntos/11.jpg',
+'@/assets/images/puntos/12.jpg'
+])
+
+
+
+</script>
 <template>
   <section>
     <div class="seccion">
@@ -83,18 +103,9 @@
     <div class="seccion">
       <div class="cont-img-full">
         <img id="fagnano" src="@/assets/images/fagnano2.png" />
-        <div class="pin" id="pin-1"><p><i class="fa-solid fa-camera"></i></p></div>
-        <div class="pin" id="pin-2"><p><i class="fa-solid fa-camera"></i></p></div>
-        <div class="pin" id="pin-3"><p><i class="fa-solid fa-camera"></i></p></div>
-        <div class="pin" id="pin-4"><p><i class="fa-solid fa-camera"></i></p></div>
-        <div class="pin" id="pin-5"><p><i class="fa-solid fa-camera"></i></p></div>
-        <div class="pin" id="pin-6"><p><i class="fa-solid fa-camera"></i></p></div>
-        <div class="pin" id="pin-7"><p><i class="fa-solid fa-camera"></i></p></div>
-        <div class="pin" id="pin-8"><p><i class="fa-solid fa-camera"></i></p></div>
-        <div class="pin" id="pin-9"><p><i class="fa-solid fa-camera"></i></p></div>
-        <div class="pin" id="pin-10"><p><i class="fa-solid fa-camera"></i></p></div>
-        <div class="pin" id="pin-11"><p><i class="fa-solid fa-camera"></i></p></div>
-        <div class="pin" id="pin-12"><p><i class="fa-solid fa-camera"></i></p></div>
+        <div v-for="(p, index) in puntosMapa" class="pin" :id="`pin-${index}`">
+          <p><i class="fa-solid fa-camera"></i></p>
+        </div>
       </div>
     </div>
   </section>
