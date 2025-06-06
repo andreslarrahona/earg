@@ -1,22 +1,69 @@
 <script setup>
-import {ref} from 'vue';
+import {ref, onMounted, onUnmounted} from 'vue';
 
-const puntosMapa = ref([
-'@/assets/images/puntos/01.jpg',
-'@/assets/images/puntos/02.jpg',
-'@/assets/images/puntos/03.jpg',
-'@/assets/images/puntos/04.jpg',
-'@/assets/images/puntos/05.jpg',
-'@/assets/images/puntos/06.jpg',
-'@/assets/images/puntos/07.jpg',
-'@/assets/images/puntos/08.jpg',
-'@/assets/images/puntos/09.jpg',
-'@/assets/images/puntos/10.jpg',
-'@/assets/images/puntos/11.jpg',
-'@/assets/images/puntos/12.jpg'
-])
+const puntosMapa = [
+  {imagen: 'src/assets/images/puntos/01.jpg', id: 1},
+  {imagen: 'src/assets/images/puntos/02.jpg', id: 2}, 
+  {imagen: 'src/assets/images/puntos/03.jpg', id: 3},
+  {imagen: 'src/assets/images/puntos/04.jpg', id: 4},
+  {imagen: 'src/assets/images/puntos/05.jpg', id: 5},
+  {imagen: 'src/assets/images/puntos/06.jpg', id: 6},
+  {imagen: 'src/assets/images/puntos/07.jpg', id: 7},
+  {imagen: 'src/assets/images/puntos/08.jpg', id: 8},
+  {imagen: 'src/assets/images/puntos/09.jpg', id: 9},
+  {imagen: 'src/assets/images/puntos/10.jpg', id: 10},
+  {imagen: 'src/assets/images/puntos/11.jpg', id: 11},
+  {imagen: 'src/assets/images/puntos/12.jpg', id: 12}
+]
+
+const popupAbierto = ref(false)
+const imagenActual = ref('')
+const popupX = ref(-9999)
+const popupY = ref(-9999)
+const popupRef = ref(null)
 
 
+function abrirPopup(index, event) {
+  imagenActual.value = puntosMapa[index].imagen
+  popupAbierto.value = true
+
+  const popupWidth = 600
+  const popupHeight = 400
+  const padding = 10
+
+  const x = event.clientX + padding
+  const y = event.clientY + padding
+
+  const maxX = window.innerWidth - popupWidth - padding
+  const maxY = window.innerHeight - popupHeight - padding
+
+  popupX.value = Math.min(x, maxX)
+  popupY.value = Math.min(y, maxY)
+}
+
+
+function cerrarPopup() {
+  popupAbierto.value = false
+}
+function handleClickOutside(event) {
+  if (!popupRef.value) return
+
+  const popup = popupRef.value
+  const isClickInsidePopup = popup.contains(event.target)
+  const isClickOnPin = event.target.closest('.pin') !== null
+
+  if (!isClickInsidePopup && !isClickOnPin) {
+    cerrarPopup()
+  }
+}
+
+onMounted(() => {
+  document.addEventListener('click', handleClickOutside)
+})
+
+onUnmounted(() => {
+  document.removeEventListener('click', handleClickOutside)
+})
 
 </script>
 <template>
@@ -102,10 +149,26 @@ const puntosMapa = ref([
     </div>
     <div class="seccion">
       <div class="cont-img-full">
+        <h1>Perfiles batimétricos en el Lago Fagnano</h1>
         <img id="fagnano" src="@/assets/images/fagnano2.png" />
-        <div v-for="(p, index) in puntosMapa" class="pin" :id="`pin-${index}`">
+        <div v-for="(p, index) in puntosMapa"
+          :key="index"
+          class="pin"
+          :id="`pin-${index+1}`"
+          @click.stop="abrirPopup(index, $event)"
+        >
           <p><i class="fa-solid fa-camera"></i></p>
         </div>
+        <transition name="fade">
+        <div
+          v-if="popupAbierto"
+          class="popup-imagen"
+          :style="{ top: `${popupY}px`, left: `${popupX}px` }"
+          ref="popupRef"
+        >
+          <img :src="imagenActual" />
+        </div>
+        </transition>
       </div>
     </div>
   </section>
@@ -237,6 +300,40 @@ section {
       height: 0; /* Necesario cuando uso padding-bottom para controlar la altura */
       padding-bottom: 42.26%; /* Valor para mantener la relación de aspecto */
       overflow: hidden;
+      .popup-imagen {
+        position: fixed;
+        width:50%;
+        height:40%;
+        max-width:500px;
+        max-height:40%;
+        // margin-left: max(30%, 400px);
+        // margin-top: 10%;
+        border-radius:8px;
+        padding: 5px;
+        z-index: 10;
+        box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.4);
+      }
+
+      .popup-imagen img {
+        width: 100%;
+        height:100%;
+        object-fit:cover;
+        border-radius:8px;
+
+      }
+      h1{
+        z-index:10;
+        color:$color-1;
+        position:absolute;
+        top:2em;
+        font-size:1.9em;
+        right:2.5em;
+        width:50%;
+        text-align: right;
+        max-width:50%;
+        text-shadow:6px 6px 10px $color-6;
+        opacity:0.95;
+      }
       img {
         width: 100%;
         position:absolute;
@@ -289,6 +386,7 @@ section {
       #pin-10 {top: 56%;left: 24%;}
       #pin-11 {top: 54%;left: 18%;}
       #pin-12 {top: 49%;left: 10%;}
+      
     }
   }
 }
