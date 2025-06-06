@@ -56,7 +56,7 @@ const config = {
   </div>
   <div class="cont-mas-links">
       <router-link to="/Geodesia" class="card card1">
-        <img src="@/assets/images/geoide.jpg">
+        <img src="@/assets/images/fotos/geodesia.jpg">
         <div class="sombra-card"></div>
         <p>Modelo de geoide</p>
       </router-link>    
