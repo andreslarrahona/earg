@@ -1,9 +1,9 @@
-$color-1: #e7dfdc;
-$color-2: #162570;
-$color-3:#ffffff;
-$color-4:#000000;
-$color-5:#094c00;
-$color-6:rgb(74, 74, 66);
+$color-1: #e7dfdc; .color-1{color:$color-1};
+$color-2: #162570; .color-2{color:$color-2};
+$color-3:#ffffff; .color-3{color:$color-3};
+$color-4:#000000; .color-4{color:$color-4};
+$color-5:#094c00; .color-5{color:$color-5};
+$color-6:rgb(74, 74, 66); .color-6{color:$color-6};
 $font-main: 'Montserrat', sans-serif;
 $font-regular: 400;
 $font-semibold: 600;

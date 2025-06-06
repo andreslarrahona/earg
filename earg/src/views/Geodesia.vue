@@ -99,7 +99,7 @@ onUnmounted(() => {
           </p>
           <p>
             Esta Red, cuya versión inicial se denominó
-            <strong style="color: $color-2">TDF95</strong>, constaba
+            <strong class="color-2">TDF95</strong>, constaba
             inicialmente de 23 pilares distribuidos en la Isla Grande de Tierra
             del Fuego. Hoy, ampliada y mejorada, se estima que su error es menor
             a los 10 milímetros en cualquiera de las tres coordenadas (Latitud,
