@@ -181,7 +181,7 @@ const perfiles = [
       </p>
 
       <figure class="article-inline-image">
-        <img src="@/assets/images/fotos/12.jpg" alt="Fotografías de mediciones geodésicas" />
+        <img src="@/assets/images/fotos/17.jpg" alt="Fotografías de mediciones geodésicas" />
       </figure>
 
       <p>
@@ -207,11 +207,15 @@ const perfiles = [
           Hormaechea et al., 2004).</i
         >
       </p>
-      
+      <p>
+        Actualmente, la EARG mantiene cuatro estaciones fijas: una del sistema DORIS 
+        (RIOA desde 1990 hasta 1995, RIOB desde 1995 hasta enero del 2001, RIPB en la actualidad)
+         y tres GNSS (RIO2 desde 1996, RGDG (CNES) y RIOZ (CAS)). Esto permite contar con 
+         coordenadas milimétricas en el sistema de referencia geocéntrico ITRF.
+
+      </p>
     </section>
     
-    
-
     <section class="article-section team-section">
       <h2 class="section-title">Equipo de trabajo</h2>
       <div class="team-members">
@@ -256,9 +260,7 @@ const perfiles = [
         "Antartic Neotectonic Workshop" de Siena, Italia (2001), "Neotectonics
         at the Magallanes-Fagnano fault system".
       </p>
-      
     </section>
-
     <section class="article-section">
       <p>
         A partir de 2003, en colaboración con la Universidad Técnica de Dresden
@@ -267,6 +269,32 @@ const perfiles = [
         transformante en Tierra del Fuego (ver Mendoza et al., 2011, Mendoza et
         al., 2015 y Mendoza et al., 2021).
       </p>
+      </section>
+      <div id="cont-fagnano">
+        <h1>Perfiles batimétricos en el Lago Fagnano</h1>
+        <h3>TU Dresden IPG - UNLP FCAG EARG</h3>
+        <img id="fagnano" src="@/assets/images/fagnano2.png" />
+        <div v-for="(p, index) in puntosMapa"
+          :key="index"
+          class="pin"
+          :id="`pin-${index+1}`"
+          @click.stop="abrirPopup(index, $event)"
+        >
+          <p><i class="fa-solid fa-camera"></i></p>
+        </div>
+        <transition name="fade">
+        <div
+          v-if="popupAbierto"
+          class="popup-imagen"
+          :style="{ top: `${popupY}px`, left: `${popupX}px` }"
+          ref="popupRef"
+        >
+          <img :src="imagenActual" />
+        </div>
+        </transition>
+      </div>
+
+      <section>
       <p>
         Utilizando GPS diferencial para la georreferenciación y una ecosonda
         Raytheon L265 F, se realizaron 18 perfiles operando desde el
@@ -287,6 +315,7 @@ const perfiles = [
             </div>
         </figcaption>
       </figure>
+      
       <p>
         El punto de mayor profundidad se registró en el perfil N°3 a 2800 m de
         la margen norte (unos 500 m al este del perfil 13) donde el sondeo
@@ -299,6 +328,31 @@ const perfiles = [
         una carta del lago Fagnano (diciembre 2004) incluyendo la información
         batimétrica obtenida en el marco de estas campañas.
       </p>
+    </section>
+    <section class="article-section redes-section">
+      <h2>Redes y servicios</h2>
+      <p>Estas son las redes y servicios a los que las estaciones fijas de la EARG pertenecen y aportan datos: </p>
+      <div class="cont-logos-geodesia">
+        <div><img src="@/assets/images/logos/igs.png"></div>
+        <div><img src="@/assets/images/logos/iers.png"></div>
+        <div><img src="@/assets/images/logos/gfz.png"></div>
+        <div><img src="@/assets/images/logos/ign.png"></div>
+        <div><img src="@/assets/images/logos/ids.png"></div>
+      </div>
+      <h2>Enlaces relacionados</h2>
+      <ul>
+        <li><a href="">Red Geodésica de Tierra del Fuego (oficial)</a></li>
+        <li><a href="">Transformación de Coordenadas Geodésicas (Gauss-Kruger / UTM & Geográficas)</a></li>
+        <li><a href="">Transformación de Coordenadas Geodésicas (E.A.R.G.)</a></li>
+        <li><a href="">TDF95 (POSGAR94) a POSGAR07 en Tierra del Fuego</a></li>
+        <li><a href="">Transformación de Proyecciones planas</a></li>
+        <li><a href="">Cartesianas geocéntricas a geográficas</a></li>
+        <li><a href="">Transformación de Grass-Kruger a Geográficas</a></li>
+        <li><a href="">Proyección Grass-Kruger</a></li>
+        <li><a href="">Publicaciones</a></li>
+
+      </ul>
+
     </section>
   </article>
   </section>
@@ -407,7 +461,7 @@ const perfiles = [
     }
   }
   .text-highlight {
-    color: #c0392b; /* A distinct color for highlighted text */
+    color: $color-2; /* A distinct color for highlighted text */
     font-weight: bold;
   }
 }
@@ -634,4 +688,139 @@ p {
             }
           }
         }
+        .redes-section{
+          .cont-logos-geodesia{
+            display:flex;
+            padding-right:1em;
+            width:100%;
+            justify-content:center;
+            gap:1em;
+            div{
+              border-radius:50%;
+              height:130px;
+              width:130px;
+              box-shadow:5px 5px 10px rgba(0, 0, 0, 0.4);
+              display:flex;
+              align-items:center;
+              justify-content:center;
+              transition:all 0.3s ease;
+              cursor:pointer;
+              img{
+                max-height:75%;
+                max-width:75%;
+                opacity:0.9;
+                transition:all 0.3s ease;
+              }
+              &:hover{
+                scale:0.95;
+                img{opacity:1;}
+              }
+            }
+            
+          }
+          ul{
+              list-style:none;
+              margin-left:1em;
+              &>li a{
+                text-decoration:none;
+                &:hover{
+                  color:$color-6;
+                  font-weight:bold;
+                  
+                }
+                &:focus, &:link, &:visited{
+                  color:$color-4;
+                }
+              }
+            }
+        }
+        #cont-fagnano{
+            width:100vw;
+            position:relative;
+            height: 0; /* Necesario cuando uso padding-bottom para controlar la altura */
+            padding-bottom: 42.26vw; /* Valor para mantener la relación de aspecto */  
+            overflow: hidden;
+            margin-left:calc((-100vw + 800px)/2);
+            margin-top:2em;
+            @include margin-y(2em);
+            @media (max-width: 820px) {
+                margin-left:-1.8em;
+            }
+            @media (max-width:600px){
+              .pin{display:none;}
+            }
+
+            
+            
+            .popup-imagen {
+              position: fixed;
+              width:50%;
+              height:40%;
+              max-width:500px;
+              max-height:40%;
+              border-radius:8px;
+              padding: 0;
+              z-index: 10;
+              box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.4);
+            }
+
+            .popup-imagen img {
+              width: 100%;
+              height:100%;
+              object-fit:cover;
+              border-radius:8px;
+
+            }
+            #fagnano{
+              width:100%;
+              position:absolute;
+              top:0;
+              left:0;
+            }
+            .pin {
+              position: absolute;
+              width: 40px;
+              height: 40px;
+              background-color: $color-1;
+              transform: translate(-50%, -50%) rotate(45deg); 
+              box-shadow: 5px 5px 10px $color-4;
+              cursor: pointer;
+              transition: all 0.3s;
+              outline: 1px solid $color-6; /* El borde que quieres ver */
+              outline-offset: -3px;
+              opacity:0.4;
+              &:hover {
+                margin-top: -0.7em;
+                box-shadow: 0.7em 0.7em 10px $color-4;
+                opacity:1;
+              }
+              p {
+                font-style: italic;
+                transform: rotate(-45deg);
+                text-align: center;
+                width: 50%;
+                justify-self: center;
+                font-weight: bold;
+                position:absolute;
+                top:0.4em;
+                left:0.6em;
+                color:$color-6;
+                opacity:0.9;
+              }
+            }
+            #pin-1 {top: 35%;left: 5%;}
+            #pin-2 {top: 40%;left: 22%;}
+            #pin-3 {top: 32%;left: 50%;}
+            #pin-4 {top: 38%;left: 64%;}
+            #pin-5 {top: 34%;left: 79%;}
+            #pin-6 {top: 43%;left: 80%;}
+            #pin-7 {top: 56%;left: 66%;}
+            #pin-8 {top: 53%;left: 54%;}
+            #pin-9 {top: 53%;left: 33%;}
+            #pin-10 {top: 56%;left: 24%;}
+            #pin-11 {top: 54%;left: 18%;}
+            #pin-12 {top: 49%;left: 10%;}
+            
+          }
+        
 </style>

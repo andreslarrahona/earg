@@ -26,6 +26,10 @@ $breakpoint-mobile: 768px;
   margin-left: $value;
   margin-right: $value;
 }
+@mixin margin-y($value) {
+  margin-top: $value;
+  margin-bottom:$value;
+}
 
 :root {
   font-family: $font-main;
