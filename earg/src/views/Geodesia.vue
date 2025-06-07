@@ -1,5 +1,23 @@
 <script setup>
 import {ref, onMounted, onUnmounted} from 'vue';
+import perfil1 from '@/assets/images/puntos/perfiles/perfil1.gif';
+import perfil2 from '@/assets/images/puntos/perfiles/perfil2.gif';
+import perfil3 from '@/assets/images/puntos/perfiles/perfil3.gif';
+import perfil4 from '@/assets/images/puntos/perfiles/perfil4.gif';
+import perfil6 from '@/assets/images/puntos/perfiles/perfil6.gif';
+import perfil7 from '@/assets/images/puntos/perfiles/perfil7.gif';
+import perfil8 from '@/assets/images/puntos/perfiles/perfil8.gif';
+import perfil9 from '@/assets/images/puntos/perfiles/perfil9.gif';
+import perfil10 from '@/assets/images/puntos/perfiles/perfil10.gif';
+import perfil11 from '@/assets/images/puntos/perfiles/perfil11.gif';
+import perfil12 from '@/assets/images/puntos/perfiles/perfil12.gif';
+import perfil13 from '@/assets/images/puntos/perfiles/perfil13.gif';
+import perfil14 from '@/assets/images/puntos/perfiles/perfil14.gif';
+import perfil15 from '@/assets/images/puntos/perfiles/perfil15.gif';
+import perfil16 from '@/assets/images/puntos/perfiles/perfil16.gif';
+import perfil17 from '@/assets/images/puntos/perfiles/perfil17.gif';
+import perfil18 from '@/assets/images/puntos/perfiles/perfil18.gif';
+
 
 const puntosMapa = [
   {imagen: 'src/assets/images/puntos/01.jpg', id: 1},
@@ -65,12 +83,50 @@ onUnmounted(() => {
   document.removeEventListener('click', handleClickOutside)
 })
 
+const perfilSeleccionado = ref('')
+const perfiles = [
+  { id: 1, name: 'Perfil 1', url: perfil1, filename: 'perfil1.gif' },
+  { id: 2, name: 'Perfil 2', url: perfil2, filename: 'perfil2.gif' },
+  { id: 3, name: 'Perfil 3', url: perfil3, filename: 'perfil3.gif' },
+  { id: 4, name: 'Perfil 4', url: perfil4, filename: 'perfil4.gif' },
+  { id: 6, name: 'Perfil 6', url: perfil6, filename: 'perfil6.gif' },
+  { id: 7, name: 'Perfil 7', url: perfil7, filename: 'perfil7.gif' },
+  { id: 8, name: 'Perfil 8', url: perfil8, filename: 'perfil8.gif' },
+  { id: 9, name: 'Perfil 9', url: perfil9, filename: 'perfil9.gif' },
+  { id: 10, name: 'Perfil 10', url: perfil10, filename: 'perfil10.gif' },
+  { id: 11, name: 'Perfil 11', url: perfil11, filename: 'perfil11.gif' },
+  { id: 12, name: 'Perfil 12', url: perfil12, filename: 'perfil12.gif' },
+  { id: 13, name: 'Perfil 13', url: perfil13, filename: 'perfil13.gif' },
+  { id: 14, name: 'Perfil 14', url: perfil14, filename: 'perfil14.gif' },
+  { id: 15, name: 'Perfil 15', url: perfil15, filename: 'perfil15.gif' },
+  { id: 16, name: 'Perfil 16', url: perfil16, filename: 'perfil16.gif' },
+  { id: 17, name: 'Perfil 17', url: perfil17, filename: 'perfil17.gif' },
+  { id: 18, name: 'Perfil 18', url: perfil18, filename: 'perfil18.gif' }
+];
+    const descargarPerfil = () => {
+    // Accede a perfilSeleccionado.value para obtener su valor
+    if (perfilSeleccionado.value) {
+      // Encuentra el objeto de perfil completo usando la URL seleccionada
+      const selectedPerfilObject = perfiles.find(perfil => perfil.url === perfilSeleccionado.value);
+
+      if (selectedPerfilObject) {
+        const link = document.createElement('a');
+        link.href = selectedPerfilObject.url;
+        // Añade el atributo download para sugerir un nombre de archivo
+        link.download = selectedPerfilObject.filename || 'descarga.jpg'; // Usa el nombre de archivo definido o uno por defecto
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+      }
+    }
+  }
+
 </script>
 <template>
   <section>
     <div class="seccion">
       <div class="titulo-seccion">
-        <h1>Contexto</h1>
+        <h1>Programa de Geodesia Satelitaria</h1>
         <div class="img-titulo">
           <a
             target="_blank"
@@ -148,8 +204,9 @@ onUnmounted(() => {
       </div>
     </div>
     <div class="seccion">
-      <div class="cont-img-full">
+      <div id="cont-fagnano" class="cont-img-full">
         <h1>Perfiles batimétricos en el Lago Fagnano</h1>
+        <h3>TU Dresden IPG - UNLP FCAG EARG</h3>
         <img id="fagnano" src="@/assets/images/fagnano2.png" />
         <div v-for="(p, index) in puntosMapa"
           :key="index"
@@ -169,6 +226,93 @@ onUnmounted(() => {
           <img :src="imagenActual" />
         </div>
         </transition>
+      </div>
+      <div class="cont-img-full" id="detalles-geodesia">
+        <div style="display:flex;">
+          <div>
+            
+            <h2>Equipo de trabajo</h2>
+            <div id="equipo-geodesia">
+              <span>
+                <strong>EARG</strong>
+                <ul>
+                  <li>José Luis Hormaechea</li>
+                  <li>Carlos Ferrer</li>
+                  <li>Gerardo Connon</li>
+                  <li>Luis Barbero</li>
+                </ul>
+              </span>
+              <span>
+                <strong>OGS</strong>
+                <ul>
+                  <li>Emanuele Lodolo</li>
+                </ul>
+              </span>
+              <span>
+                <strong>UBA-CONICET</strong>
+                <ul>
+                  <li>Alejandro Tassone</li>
+                  <li>Horacio Lippai</li>
+                </ul>
+              </span>
+              <span>
+                <strong>PNA</strong>
+                <ul>
+                  <li>Personal Destacamento Lago Fagnano</li>
+                </ul>
+              </span>
+            </div>
+            <p>
+              A partir de 2003, en colaboración con la Universidad Técnica de Dresden (Alemania), se densificó la red geodinámica, 
+              alcanzándose mayor detalle y exactitud en la determinación de la cinemática del límite transformante en Tierra del Fuego 
+              (ver Mendoza et al., 2011, Mendoza et al., 2015 y Mendoza et al., 2021).
+            </p>
+            <p>
+              Utilizando GPS diferencial para la georreferenciación y una ecosonda Raytheon L265 F, se realizaron 18 perfiles operando
+              desde el destacamento Lago Fagnano de la PNA (nov. 2000) y desde Laguna Èombilla (abr. 2001).
+            </p>
+            <p>
+            Posteriormente, se realizaron dos campañas adicionales hasta totalizar 45 perfiles (marzo 2004). La Dirección de
+            Planeamiento Territorial e Información Geográfica de la Provincia de Tierra del Fuego confeccionó una carta del lago
+            Fagnano (diciembre 2004) incluyendo la información batimétrica obtenida en el marco de estas campañas.
+            </p>
+            <p>A continuación, los primeros 18 perfiles realizados:</p>
+          </div>
+          <div id="batimetria-detalles">
+            <p>
+              Los primeros estudios batimétricos fueron realizados en noviembre del 2000 y abril del 2001 con la invaluable colaboración
+              de la Prefectura Naval Argentina.
+            </p>
+            <p>
+            El punto de mayor profundidad se registró en el perfil N°3 a 2800 m de la margen norte (unos 500 m al este del perfil 13)
+            donde el sondeo indicó 201 m.
+            </p>
+            <p>
+            La EARG agradece especialmente a Fabian Gouget por el apoyo logístico en el campamento de Laguna Bombilla.
+            Un Panorama más completo de las Investigaciones en el área se describe en la presentación en el "Antartic Neotectonic 
+            Workshop" de Siena, Italia (2001), "Neotectonics at the Magallanes-Fagnano fault system".
+            </p>
+            
+          </div>
+
+
+
+        </div>
+        
+          
+          
+          <div id="batimetria">
+            <img  src="@/assets/images/puntos/batimetria.gif">
+            <div id="cont-perfiles">
+              <select v-model="perfilSeleccionado" @change="descargarPerfil">
+                <option disabled selected value="">Descargar perfiles</option> 
+                <option v-for="perfil in perfiles" :key="perfil.id" :value="perfil.url">
+                  {{ perfil.name }} ↓
+                </option>
+              </select>
+            </div>
+          </div>
+        
       </div>
     </div>
   </section>
@@ -293,12 +437,14 @@ section {
         }
       }
     }
+    #cont-fagnano{
+      height: 0; /* Necesario cuando uso padding-bottom para controlar la altura */
+      padding-bottom: 42.26%; /* Valor para mantener la relación de aspecto */  
+    }
 
     .cont-img-full {
       width: 100vw;
       position: relative;
-      height: 0; /* Necesario cuando uso padding-bottom para controlar la altura */
-      padding-bottom: 42.26%; /* Valor para mantener la relación de aspecto */
       overflow: hidden;
       .popup-imagen {
         position: fixed;
@@ -321,11 +467,11 @@ section {
         border-radius:8px;
 
       }
-      h1{
+      h1, h3{
         z-index:10;
         color:$color-1;
         position:absolute;
-        top:2em;
+        top:1.8em;
         font-size:1.9em;
         right:2.5em;
         width:50%;
@@ -334,7 +480,13 @@ section {
         text-shadow:6px 6px 10px $color-6;
         opacity:0.95;
       }
-      img {
+      h3{
+        top:4.2em;  
+        font-size:1.5em;
+        font-weight:400;
+        right:3.2em;
+      }
+      #fagnano {
         width: 100%;
         position:absolute;
         top:0;
@@ -387,10 +539,103 @@ section {
       #pin-11 {top: 54%;left: 18%;}
       #pin-12 {top: 49%;left: 10%;}
       
+      
     }
+    #batimetria-detalles{
+      border-radius:8px;
+      background-color:$color-6;
+      margin:6em 2em;
+      margin-right:4em;
+      font-size:0.85em;
+      align-content:center;
+    }
+    #detalles-geodesia {
+      background-color: $color-7;
+      color: $color-1;
+      width: 100%;
+      padding-top: 2em;
+      background-image: url('@/assets/images/fondo.png');
+      opacity: 1;
+
+      p{margin:1em 5em;text-indent: 1em;}
+      h2{margin-left:4em;}
+      #equipo-geodesia{
+        display:flex;
+        margin:2em 9em;
+        gap:4em;
+        font-size:0.9em;
+        li{margin-left:1em;}
+      }
+      #batimetria{
+        margin:3em auto;
+        width:100%;
+        display:flex;
+        justify-content:center;
+        flex-direction:column;
+        img{
+          width:95%;
+          max-width:800px;
+          align-self:center;
+        }
+        #cont-perfiles {
+          margin-top: 20px;
+          display: flex;
+          justify-content: center;
+          margin:0;
+          font-size:0.8em;
+          select {
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            background-color: transparent;
+            border: none; 
+            padding: 8px 12px 8px 0; 
+            font-size: 1em;
+            color: $color-3;
+            cursor: pointer;
+            outline: none;
+            text-align: left; 
+            width: auto;
+            min-width: 160px; 
+            max-width: 100%;
+            font-family:$font-main;
+            background-image: url('data:image/svg+xml;utf8,<svg fill="white" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/><path d="M0 0h24v24H0z" fill="none"/></svg>');
+            background-repeat: no-repeat;
+            background-position: right 0px center;
+            background-size: 16px;
+            padding-left:1em;
+            margin-top:1em;
+            &:hover {
+              color: rgba(255, 255, 255, 0.8); 
+            }
+            &:focus {
+              border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+            }
+            option {
+              background-color: $color-4;
+              color: $color-3;
+              padding: 8px 15px;
+              font-size: 1em;
+              border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+              &:hover {
+                background-color: $color-7; // Un verde ligeramente más oscuro al pasar el mouse
+              }
+              &:checked {
+                background-color: $color-6; // Fondo verde oscuro para la opción seleccionada
+              }
+            }
+            option[disabled] {
+              background-color: transparent; // O un gris muy oscuro si el select se abre sobre un fondo oscuro
+              color: rgba(0, 0, 0, 0.7); // Un blanco más tenue
+              font-weight: bold; // Opcional: hacer el texto más grueso
+              padding-right: 0;
+            }
+          }
+        }
+
+      }
+    }
+    
   }
-}
-#fagnano {
-  width: 100%;
 }
 </style>

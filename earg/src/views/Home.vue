@@ -20,6 +20,7 @@ const config = {
 </script>
 
 <template>
+  <section>
   <div class="carousel">
     <Carousel v-bind="config">
       <Slide v-for="image in images" :key="image.id">
@@ -71,11 +72,16 @@ const config = {
         <p>Material didáctico para escuelas</p>
       </router-link> 
   </div>
-
+</section>
 </template>
 
 <style scoped lang="scss">
 @import "@/assets/styles/main.scss";
+section{
+  display:flex;
+  flex-direction:column;
+  margin-top:17vh;
+}
 
 .carousel {
   --vc-nav-background: rgba(255, 255, 255, 0.7);
@@ -85,7 +91,7 @@ const config = {
   color:$color-3;
   padding-top:2vh;
   padding-bottom:8vh;
-
+  
 
 }
 
@@ -107,6 +113,7 @@ const config = {
   background-color: $color-1;
   padding-bottom:0;
   position:relative;
+  margin-top:15vh;
 
   a{
     padding: 1em 2em;

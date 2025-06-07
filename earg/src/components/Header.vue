@@ -113,7 +113,7 @@ onBeforeUnmount(() => {
             <router-link to="/"><p class="btn btn-1">Contacto</p></router-link>
         </div>
     </nav>
-    <div class="cont-titulo-seccion">
+    <div class="cont-titulo-seccion"  v-if="$route.path === '/'">
         <img src="@/assets/images/logos/logo1.png">
     </div>
   </header>
@@ -125,7 +125,7 @@ onBeforeUnmount(() => {
 header {
     background:none;
     color:$color-3;
-    height:35vh;
+    //height:35vh;
     width:100vw;
     max-width:100vw;
     overflow-y:visible;
@@ -133,7 +133,10 @@ header {
     background-image:
         linear-gradient(to bottom, rgba(0,0,0,0), rgba(0,0,0,1)),
         url('../assets/images/R.jpg');
-
+    position:fixed;
+    top:0;
+    left:0;
+    z-index:100;
 
     nav{
         height:15vh;
@@ -218,7 +221,7 @@ header {
     }
     .cont-titulo-seccion{
         width:100%;
-        height: 10vh;
+        height: 0;
         margin-top:20vh;
         display:flex;
         align-items:center;
@@ -226,9 +229,9 @@ header {
         img{
             opacity:0.9;
             width:10%;
-            min-width:500px;
-            max-width:700px;
-            margin-bottom:37vh;
+            min-width:400px;
+            max-width:600px;
+            margin-bottom:20vh;
         }
 
     }
