@@ -39,6 +39,7 @@ const imagenActual = ref('')
 const popupX = ref(-9999)
 const popupY = ref(-9999)
 const popupRef = ref(null)
+const imagenGeodesia = ref(false)
 
 
 function abrirPopup(index, event) {
@@ -75,12 +76,22 @@ function handleClickOutside(event) {
   }
 }
 
+const handleKeydown = (event) => {
+  if (imagenGeodesia.value && event.key === 'Escape') {
+    imagenGeodesia.value = false;
+  }
+};
+
 onMounted(() => {
   document.addEventListener('click', handleClickOutside)
+    document.addEventListener('keydown', handleKeydown);
+
 })
 
 onUnmounted(() => {
   document.removeEventListener('click', handleClickOutside)
+    document.addEventListener('keydown', handleKeydown);
+
 })
 
 const perfilSeleccionado = ref('')
@@ -123,187 +134,150 @@ const perfiles = [
 
 </script>
 <template>
-  <section>
-    <div class="seccion">
-      <div class="titulo-seccion">
-        <h1>Programa de Geodesia Satelitaria</h1>
-        <div class="img-titulo">
-          <a
-            target="_blank"
-            href="https://www.ign.gob.ar/category/tem%C3%A1tica/geodesia/posgar-07"
-          >
-            <img src="@/assets/images/logos/POSGAR07.png" />
-          </a>
-        </div>
-      </div>
-      <div class="texto-2col">
-        <div class="col-texto">
-          <p>
-            Este programa se inició en 1984 con la participación en una campaña
-            de mediciones Transit propuesta por la Facultad de Ciencias
-            Astronómicas y Geofísicas de la UNLP (Depto. de Astrometría).
-          </p>
-          <p>
-            Desde entonces este programa ha contribuido a vincular el territorio
-            de la Isla Grande de Tierra del Fuego con redes geodésicas
-            nacionales e internacionales.
-          </p>
-          <p>
-            En 1993, conjuntamente con la entonces Dirección de Geodesia de la
-            Provincia, dirigida por el Agr. Carlos Zampatti, se diseñó y midió
-            la Red Geodésica Provincial.
-          </p>
-          <p>
-            Esta Red, cuya versión inicial se denominó
-            <strong class="color-2">TDF95</strong>, constaba
-            inicialmente de 23 pilares distribuidos en la Isla Grande de Tierra
-            del Fuego. Hoy, ampliada y mejorada, se estima que su error es menor
-            a los 10 milímetros en cualquiera de las tres coordenadas (Latitud,
-            Longitud y Altura Elipsoidal).
-          </p>
-          <p>
-            TDF95 materializaba el marco de referencia POSGAR94 (marco Oficial
-            de la Rep. Argentina desde 1997 hasta mayo 2009) en la Isla Grande,
-            hoy reemplazado por POSGAR 07 en Tierra del Fuego.
-          </p>
-        </div>
-        <div class="col-img" id="img-geodesia">
-          <img src="@/assets/images/fotos/12.jpg" />
-        </div>
-      </div>
-      <hr />
-      <div class="texto-2col">
-        <div class="col-texto">
-          <p>
-            La EARG remide regularmente esta red a los efectos de estudiar su
-            estabilidad y ensayar diferentes métodos de medición y
-            procesamiento. Estas remediciones revisten especial interés pues
-            Tierra del Fuego es la única provincia argentina que trasciende la
-            Placa Sudamericana, tal como se observa en el mapa de la derecha.
-          </p>
-          <p>
-            Se puede apreciar que la zona al sur del Lago Fagnano pertenece a la
-            Placa de Scotia. El procesamiento de las mediciones efectuadas desde
-            1993 sugiere la existencia de un desplazamiento relativo de más de 5
-            mm/año en el período considerado
-            <i
-              >(Del Cogliano et al., 2000 resumen disponible, Perdomo et al.,
-              2002, Hormaechea et al., 2004).</i
-            >
-          </p>
-        </div>
-        <div class="col-img" id="mapa-geodesia">
-          <div id="sombra-geodesia">
-            <p>
-              AMPLIAR
-              <i style="margin-left: 0.5em" class="fa-solid fa-expand"></i>
-            </p>
-          </div>
-          <img src="@/assets/images/geodesia.jpg" />
-        </div>
-      </div>
-    </div>
-    <div class="seccion">
-      <div id="cont-fagnano" class="cont-img-full">
-        <h1>Perfiles batimétricos en el Lago Fagnano</h1>
-        <h3>TU Dresden IPG - UNLP FCAG EARG</h3>
-        <img id="fagnano" src="@/assets/images/fagnano2.png" />
-        <div v-for="(p, index) in puntosMapa"
-          :key="index"
-          class="pin"
-          :id="`pin-${index+1}`"
-          @click.stop="abrirPopup(index, $event)"
+  <section class="contenedor">
+  <article class="geodesy-article">
+    <header class="article-header">
+      <h1 class="article-title">Geodesia</h1>
+      <h2 class="article-subtitle">Programa de Geodesia Satelitaria</h2>
+      <div class="posgar-logo-container">
+        <a
+          href="https://www.ign.gob.ar/category/tem%C3%A1tica/geodesia/posgar-07"
+          target="_blank"
+          rel="noopener noreferrer"
         >
-          <p><i class="fa-solid fa-camera"></i></p>
-        </div>
-        <transition name="fade">
-        <div
-          v-if="popupAbierto"
-          class="popup-imagen"
-          :style="{ top: `${popupY}px`, left: `${popupX}px` }"
-          ref="popupRef"
-        >
-          <img :src="imagenActual" />
-        </div>
-        </transition>
+          <img src="@/assets/images/logos/POSGAR07.png" alt="Logo POSGAR07" />
+        </a>
       </div>
-      <div class="cont-img-full" id="detalles-geodesia">
-        <div style="display:flex;">
-          <div>
-            
-            <h2>Equipo de trabajo</h2>
-            <div id="equipo-geodesia">
-              <span>
-                <strong>EARG</strong>
-                <ul>
-                  <li>José Luis Hormaechea</li>
-                  <li>Carlos Ferrer</li>
-                  <li>Gerardo Connon</li>
-                  <li>Luis Barbero</li>
-                </ul>
-              </span>
-              <span>
-                <strong>OGS</strong>
-                <ul>
-                  <li>Emanuele Lodolo</li>
-                </ul>
-              </span>
-              <span>
-                <strong>UBA-CONICET</strong>
-                <ul>
-                  <li>Alejandro Tassone</li>
-                  <li>Horacio Lippai</li>
-                </ul>
-              </span>
-              <span>
-                <strong>PNA</strong>
-                <ul>
-                  <li>Personal Destacamento Lago Fagnano</li>
-                </ul>
-              </span>
-            </div>
-            <p>
-              A partir de 2003, en colaboración con la Universidad Técnica de Dresden (Alemania), se densificó la red geodinámica, 
-              alcanzándose mayor detalle y exactitud en la determinación de la cinemática del límite transformante en Tierra del Fuego 
-              (ver Mendoza et al., 2011, Mendoza et al., 2015 y Mendoza et al., 2021).
-            </p>
-            <p>
-              Utilizando GPS diferencial para la georreferenciación y una ecosonda Raytheon L265 F, se realizaron 18 perfiles operando
-              desde el destacamento Lago Fagnano de la PNA (nov. 2000) y desde Laguna Èombilla (abr. 2001).
-            </p>
-            <p>
-            Posteriormente, se realizaron dos campañas adicionales hasta totalizar 45 perfiles (marzo 2004). La Dirección de
-            Planeamiento Territorial e Información Geográfica de la Provincia de Tierra del Fuego confeccionó una carta del lago
-            Fagnano (diciembre 2004) incluyendo la información batimétrica obtenida en el marco de estas campañas.
-            </p>
-            <p>A continuación, los primeros 18 perfiles realizados:</p>
-          </div>
-          <div id="batimetria-detalles">
-            <p>
-              Los primeros estudios batimétricos fueron realizados en noviembre del 2000 y abril del 2001 con la invaluable colaboración
-              de la Prefectura Naval Argentina.
-            </p>
-            <p>
-            El punto de mayor profundidad se registró en el perfil N°3 a 2800 m de la margen norte (unos 500 m al este del perfil 13)
-            donde el sondeo indicó 201 m.
-            </p>
-            <p>
-            La EARG agradece especialmente a Fabian Gouget por el apoyo logístico en el campamento de Laguna Bombilla.
-            Un Panorama más completo de las Investigaciones en el área se describe en la presentación en el "Antartic Neotectonic 
-            Workshop" de Siena, Italia (2001), "Neotectonics at the Magallanes-Fagnano fault system".
-            </p>
-            
-          </div>
+    </header>
 
+    <section class="article-section">
+      <p>
+        Este programa se inició en 1984 con la participación en una campaña de
+        mediciones Transit propuesta por la Facultad de Ciencias Astronómicas y
+        Geofísicas de la UNLP (Depto. de Astrometría).
+      </p>
+      <p>
+        Desde entonces, este programa ha contribuido a vincular el territorio
+        de la Isla Grande de Tierra del Fuego con redes geodésicas nacionales e
+        internacionales.
+      </p>
+      <p>
+        En 1993, conjuntamente con la entonces Dirección de Geodesia de la
+        Provincia, dirigida por el Agr. Carlos Zampatti, se diseñó y midió la
+        Red Geodésica Provincial.
+      </p>
+      <p>
+        Esta Red, cuya versión inicial se denominó
+        <strong class="text-highlight">TDF95</strong>, constaba inicialmente
+        de 23 pilares distribuidos en la Isla Grande de Tierra del Fuego. Hoy,
+        ampliada y mejorada, se estima que su error es menor a los 10
+        milímetros en cualquiera de las tres coordenadas (Latitud, Longitud y
+        Altura Elipsoidal).
+      </p>
+      <p>
+        TDF95 materializaba el marco de referencia POSGAR94 (marco Oficial de
+        la Rep. Argentina desde 1997 hasta mayo 2009) en la Isla Grande, hoy
+        reemplazado por POSGAR 07 en Tierra del Fuego.
+      </p>
 
+      <figure class="article-inline-image">
+        <img src="@/assets/images/fotos/12.jpg" alt="Fotografías de mediciones geodésicas" />
+      </figure>
 
+      <p>
+        La EARG remide regularmente esta red a los efectos de estudiar su
+        estabilidad y ensayar diferentes métodos de medición y procesamiento.
+        Estas remediciones revisten especial interés pues Tierra del Fuego es
+        la única provincia argentina que trasciende la Placa Sudamericana, tal
+        como se observa en el siguiente mapa.
+      </p>
+      <figure class="article-inline-image">
+        <img src="@/assets/images/geodesia.jpg" alt="Mapa de Geodesia" />
+        <figcaption>
+          Representación de las placas tectónicas en la región de Tierra del Fuego.
+        </figcaption>
+      </figure>
+      <p>
+        Se puede apreciar que la zona al sur del Lago Fagnano pertenece a la
+        Placa de Scotia. El procesamiento de las mediciones efectuadas desde
+        1993 sugiere la existencia de un desplazamiento relativo de más de 5
+        mm/año en el período considerado
+        <i
+          >(Del Cogliano et al., 2000 resumen disponible, Perdomo et al., 2002,
+          Hormaechea et al., 2004).</i
+        >
+      </p>
+      
+    </section>
+    
+    
+
+    <section class="article-section team-section">
+      <h2 class="section-title">Equipo de trabajo</h2>
+      <div class="team-members">
+        <div class="team-group">
+          <strong>EARG</strong>
+          <ul>
+            <li>José Luis Hormaechea</li>
+            <li>Carlos Ferrer</li>
+            <li>Gerardo Connon</li>
+            <li>Luis Barbero</li>
+          </ul>
         </div>
-        
-          
-          
-          <div id="batimetria">
-            <img  src="@/assets/images/puntos/batimetria.gif">
-            <div id="cont-perfiles">
+        <div class="team-group">
+          <strong>OGS</strong>
+          <ul>
+            <li>Emanuele Lodolo</li>
+          </ul>
+        </div>
+        <div class="team-group">
+          <strong>UBA-CONICET</strong>
+          <ul>
+            <li>Alejandro Tassone</li>
+            <li>Horacio Lippai</li>
+          </ul>
+        </div>
+        <div class="team-group">
+          <strong>PNA</strong>
+          <ul>
+            <li>Personal Destacamento Lago Fagnano</li>
+          </ul>
+        </div>
+      </div>
+      <p>
+        Los primeros estudios batimétricos fueron realizados en noviembre del
+        2000 y abril del 2001 con la invaluable colaboración de la Prefectura
+        Naval Argentina.
+      </p>
+      <p>
+        La EARG agradece especialmente a Fabian Gouget por el apoyo logístico
+        en el campamento de Laguna Bombilla. Un Panorama más completo de las
+        Investigaciones en el área se describe en la presentación en el
+        "Antartic Neotectonic Workshop" de Siena, Italia (2001), "Neotectonics
+        at the Magallanes-Fagnano fault system".
+      </p>
+      
+    </section>
+
+    <section class="article-section">
+      <p>
+        A partir de 2003, en colaboración con la Universidad Técnica de Dresden
+        (Alemania), se densificó la red geodinámica, alcanzándose mayor detalle
+        y exactitud en la determinación de la cinemática del límite
+        transformante en Tierra del Fuego (ver Mendoza et al., 2011, Mendoza et
+        al., 2015 y Mendoza et al., 2021).
+      </p>
+      <p>
+        Utilizando GPS diferencial para la georreferenciación y una ecosonda
+        Raytheon L265 F, se realizaron 18 perfiles operando desde el
+        destacamento Lago Fagnano de la PNA (nov. 2000) y desde Laguna Bombilla
+        (abr. 2001).
+      </p>
+      <p>A continuación, los primeros 18 perfiles realizados:</p>
+      <figure class="article-inline-image">
+        <img src="@/assets/images/puntos/batimetria.gif" alt="Perfiles batimétricos" />
+        <figcaption>
+          <div id="cont-perfiles">
               <select v-model="perfilSeleccionado" @change="descargarPerfil">
                 <option disabled selected value="">Descargar perfiles</option> 
                 <option v-for="perfil in perfiles" :key="perfil.id" :value="perfil.url">
@@ -311,74 +285,244 @@ const perfiles = [
                 </option>
               </select>
             </div>
-          </div>
-        
-      </div>
-    </div>
+        </figcaption>
+      </figure>
+      <p>
+        El punto de mayor profundidad se registró en el perfil N°3 a 2800 m de
+        la margen norte (unos 500 m al este del perfil 13) donde el sondeo
+        indicó 201 m.
+      </p>
+      <p>
+        Posteriormente, se realizaron dos campañas adicionales hasta totalizar
+        45 perfiles (marzo 2004). La Dirección de Planeamiento Territorial e
+        Información Geográfica de la Provincia de Tierra del Fuego confeccionó
+        una carta del lago Fagnano (diciembre 2004) incluyendo la información
+        batimétrica obtenida en el marco de estas campañas.
+      </p>
+    </section>
+  </article>
   </section>
 </template>
 
+
+
+
 <style scoped lang="scss">
 @import "@/assets/styles/main.scss";
+/* Base styles for a clean, readable article */
+.contenedor{
+  width:100vw;
+  background-color: $color-1; /* Puedes aplicarlo también al html para mayor seguridad */
 
-section {
-  background-color: $color-1;
+}
+.geodesy-article {
+  font-family: $font-main;
+  line-height: 1.6;
+  color: #333;
+  max-width: 800px; /* Adjusted max-width for article content */
+  margin: 0 auto; /* Center the article on the page */
+  padding: 20px;
+  background-color: $color-1; /* White background for content */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
 
-  .seccion {
-    width: 100vw;
-    hr {
-      margin: 1em 10vw 2em 5vw;
+  @media (max-width: 768px) {
+    padding: 15px;
+  }
+}
+
+/* Article Header */
+.article-header {
+  text-align: left;
+  margin-bottom: 40px;
+
+  .article-title {
+    font-family: "Helvetica Neue", Arial, sans-serif; /* Modern font for titles */
+    font-size: 2.8em;
+    font-weight: 700;
+    color: #1a2a4b; /* Dark blue for a strong presence */
+    margin-bottom: 10px; /* Reduced margin to bring logo closer */
+
+    @media (max-width: 768px) {
+      font-size: 2em;
     }
-    .titulo-seccion {
-      display: flex;
-      max-height: 3em;
-      width: calc(100% - 6em);
-      justify-content: space-between;
-      padding: 2em 3em;
-      h1 {
-        margin-left: 0.5em;
-        font-size: 2.3em;
-      }
-      .img-titulo {
-        font-size: 2.3em;
-        max-height: 100%;
-        text-align: right;
-        padding-right: 3em;
-        width: 300px;
-        a {
-          transition: all 0.3s;
-          cursor: pointer;
-          &:hover {
-            img {
-              scale: 0.95;
-            }
-          }
-        }
-        img {
-          transition: all 0.3s;
-          max-height: 100%;
-        }
-      }
+  }
+  /* Subtítulo del Artículo */
+.article-subtitle {
+  font-family: "Helvetica Neue", Arial, sans-serif; /* Consistente con el título principal */
+  font-size: 1.8em; /* Un tamaño generoso pero menor que el título principal */
+  font-weight: 600; /* Un poco menos negrita que el título */
+  color: #2c3e50; /* Un tono oscuro pero ligeramente diferente al título */
+  margin-top: 0; /* Espacio superior para separarlo del párrafo anterior */
+  margin-bottom: 20px; /* Espacio inferior para separarlo del contenido siguiente */
+  line-height: 1.3; /* Mejor legibilidad para el texto */
+
+  @media (max-width: 768px) {
+    font-size: 1.5em; /* Ajuste para pantallas más pequeñas */
+    margin-top: 25px;
+    margin-bottom: 15px;
+  }
+}
+
+  .posgar-logo-container {
+    margin-bottom: 20px; /* Space below the logo */
+
+    a {
+      display: inline-block; /* Allows for small margins/padding */
+      padding: 5px 10px;
+      border-radius: 5px;
     }
-    .texto-2col {
-      display: flex;
-      gap: 20px;
-      align-items: start;
-      padding-bottom: 2em;
+
+    img {
+      max-width: 100px; /* Smaller size for the logo */
       height: auto;
-      margin: 0 3vw;
-      .col-texto {
-        flex: 3;
-        text-align: justify;
-        p {
-          padding: 0.5em 1em;
-          text-indent: 1em;
+      display: block; /* Ensures it takes up its own line */
+      margin: 0 auto; /* Center the image within its container */
+      opacity: 0.8; /* Slight transparency for subtlety */
+      transition: all 0.3s ease; /* Smooth transition on hover */
+
+      &:hover {
+        opacity: 1;
+        scale:1.1;
+      }
+
+      @media (max-width: 768px) {
+        max-width: 80px; /* Even smaller on mobile */
+      }
+    }
+  }
+}
+
+/* Article Sections - Now primarily for containing flow text and inline images */
+.article-section {
+  margin-bottom: 30px; /* Space between sections */
+
+  p {
+    margin-bottom: 1em;
+    font-size: 1.1em; /* Slightly larger text for readability */
+    color: #444;
+
+    i {
+      font-style: italic;
+      color: #666;
+    }
+  }
+  .text-highlight {
+    color: #c0392b; /* A distinct color for highlighted text */
+    font-weight: bold;
+  }
+}
+
+/* Inline Image Styling */
+.article-inline-image {
+  margin: 40px -20px; /* Pulls image slightly out to the sides if padding is present on .geodesy-article */
+  display: block; /* Ensures it takes full width */
+  text-align: center; /* Centers the image */
+  max-width: unset; /* Override any max-width from parent */
+
+  @media (max-width: 768px) {
+    margin: 20px -15px; /* Adjust margin for smaller screens */
+  }
+
+  img {
+    width: 100%; /* Image takes 100% of its parent's width */
+    height: auto;
+    display: block;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 4px; /* Slight roundness */
+  }
+
+  figcaption {
+    font-size: 0.9em;
+    color: #666;
+    margin-top: 10px;
+    font-style: italic;
+    padding: 0 20px; /* Add padding to figcaption if image margins are negative */
+    @media (max-width: 768px) {
+      padding: 0 15px;
+    }
+  }
+}
+
+/* Team Section */
+.team-section {
+  margin-top: 40px;
+  padding: 30px;
+  background-color: #f8f8f8; /* Light background for team section */
+  border-left: 5px solid $color-2; /* A distinct border */
+  border-radius: 0 8px 8px 0; /* Rounded corners on one side */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+
+  .section-title {
+    font-family: "Helvetica Neue", Arial, sans-serif;
+    font-size: 2em;
+    color: #2c3e50;
+    margin-bottom: 25px;
+    text-align: center;
+  }
+
+  .team-members {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+    margin-bottom: 30px;
+
+    .team-group {
+      background-color: #eaf3f8;
+      padding: 15px 20px;
+      border-radius: 5px;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+      text-align: center;
+      min-width: 150px;
+
+      strong {
+        display: block;
+        font-size: 1.2em;
+        color: #34495e;
+        margin-bottom: 10px;
+      }
+
+      ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+
+        li {
+          font-size: 0.95em;
+          color: #555;
+          margin-bottom: 5px;
         }
       }
-      .col-img {
-        flex: 2;
-      }
-      #img-geodesia {
+    }
+  }
+
+  p {
+    font-size: 1.05em;
+    color: #555;
+  }
+}
+
+/* General text elements */
+h2 {
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  font-size: 2.2em;
+  color: #1a2a4b;
+  margin-top: 40px;
+  margin-bottom: 20px;
+  text-align: left; /* Default alignment for subheadings */
+  line-height: 1.2;
+
+  @media (max-width: 768px) {
+    font-size: 1.8em;
+  }
+}
+
+p {
+  margin-bottom: 1em;
+  font-size: 1.1em;
+}
+
+#img-geodesia {
         align-content: center;
         text-align: center;
         align-self: center;
@@ -436,151 +580,9 @@ section {
           object-position: 0 -20px;
         }
       }
-    }
-    #cont-fagnano{
-      height: 0; /* Necesario cuando uso padding-bottom para controlar la altura */
-      padding-bottom: 42.26%; /* Valor para mantener la relación de aspecto */  
-    }
-
-    .cont-img-full {
-      width: 100vw;
-      position: relative;
-      overflow: hidden;
-      .popup-imagen {
-        position: fixed;
-        width:50%;
-        height:40%;
-        max-width:500px;
-        max-height:40%;
-        // margin-left: max(30%, 400px);
-        // margin-top: 10%;
-        border-radius:8px;
-        padding: 5px;
-        z-index: 10;
-        box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.4);
-      }
-
-      .popup-imagen img {
-        width: 100%;
-        height:100%;
-        object-fit:cover;
-        border-radius:8px;
-
-      }
-      h1, h3{
-        z-index:10;
-        color:$color-1;
-        position:absolute;
-        top:1.8em;
-        font-size:1.9em;
-        right:2.5em;
-        width:50%;
-        text-align: right;
-        max-width:50%;
-        text-shadow:6px 6px 10px $color-6;
-        opacity:0.95;
-      }
-      h3{
-        top:4.2em;  
-        font-size:1.5em;
-        font-weight:400;
-        right:3.2em;
-      }
-      #fagnano {
-        width: 100%;
-        position:absolute;
-        top:0;
-        left:0;
-        height:100%;
-        object-fit:cover;
-        display: block;
-      }
-      .pin {
-        position: absolute;
-        width: 40px;
-        height: 40px;
-        background-color: $color-1;
-        transform: translate(-50%, -50%) rotate(45deg); 
-        box-shadow: 5px 5px 10px $color-4;
-        cursor: pointer;
-        transition: all 0.3s;
-        outline: 1px solid $color-6; /* El borde que quieres ver */
-        outline-offset: -3px;
-        opacity:0.4;
-        &:hover {
-          margin-top: -0.7em;
-          box-shadow: 0.7em 0.7em 10px $color-4;
-          opacity:1;
-        }
-        p {
-          font-style: italic;
-          transform: rotate(-45deg);
-          text-align: center;
-          width: 50%;
-          justify-self: center;
-          font-weight: bold;
-          position:absolute;
-          top:0.4em;
-          left:0.6em;
-          color:$color-6;
-          opacity:0.9;
-        }
-      }
-      #pin-1 {top: 35%;left: 5%;}
-      #pin-2 {top: 40%;left: 22%;}
-      #pin-3 {top: 32%;left: 50%;}
-      #pin-4 {top: 38%;left: 64%;}
-      #pin-5 {top: 34%;left: 79%;}
-      #pin-6 {top: 43%;left: 80%;}
-      #pin-7 {top: 56%;left: 66%;}
-      #pin-8 {top: 53%;left: 54%;}
-      #pin-9 {top: 53%;left: 33%;}
-      #pin-10 {top: 56%;left: 24%;}
-      #pin-11 {top: 54%;left: 18%;}
-      #pin-12 {top: 49%;left: 10%;}
-      
-      
-    }
-    #batimetria-detalles{
-      border-radius:8px;
-      background-color:$color-6;
-      margin:6em 2em;
-      margin-right:4em;
-      font-size:0.85em;
-      align-content:center;
-    }
-    #detalles-geodesia {
-      background-color: $color-7;
-      color: $color-1;
-      width: 100%;
-      padding-top: 2em;
-      background-image: url('@/assets/images/fondo.png');
-      opacity: 1;
-
-      p{margin:1em 5em;text-indent: 1em;}
-      h2{margin-left:4em;}
-      #equipo-geodesia{
-        display:flex;
-        margin:2em 9em;
-        gap:4em;
-        font-size:0.9em;
-        li{margin-left:1em;}
-      }
-      #batimetria{
-        margin:3em auto;
-        width:100%;
-        display:flex;
-        justify-content:center;
-        flex-direction:column;
-        img{
-          width:95%;
-          max-width:800px;
-          align-self:center;
-        }
-        #cont-perfiles {
-          margin-top: 20px;
+    #cont-perfiles {
           display: flex;
-          justify-content: center;
+          justify-content: right;
           margin:0;
           font-size:0.8em;
           select {
@@ -591,7 +593,7 @@ section {
             border: none; 
             padding: 8px 12px 8px 0; 
             font-size: 1em;
-            color: $color-3;
+            color: $color-4;
             cursor: pointer;
             outline: none;
             text-align: left; 
@@ -599,24 +601,24 @@ section {
             min-width: 160px; 
             max-width: 100%;
             font-family:$font-main;
-            background-image: url('data:image/svg+xml;utf8,<svg fill="white" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/><path d="M0 0h24v24H0z" fill="none"/></svg>');
+            background-image: url('data:image/svg+xml;utf8,<svg fill="black" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/><path d="M0 0h24v24H0z" fill="none"/></svg>');
             background-repeat: no-repeat;
             background-position: right 0px center;
             background-size: 16px;
             padding-left:1em;
             margin-top:1em;
             &:hover {
-              color: rgba(255, 255, 255, 0.8); 
+              color: $color-6; 
             }
             &:focus {
-              border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+              border-bottom: 1px solid $color-6;
             }
             option {
               background-color: $color-4;
               color: $color-3;
               padding: 8px 15px;
               font-size: 1em;
-              border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+              border-bottom: 1px solid $color-6;
               &:hover {
                 background-color: $color-7; // Un verde ligeramente más oscuro al pasar el mouse
               }
@@ -632,10 +634,4 @@ section {
             }
           }
         }
-
-      }
-    }
-    
-  }
-}
 </style>

@@ -14,4 +14,5 @@ import Footer from '@/components/Footer.vue'
 
 <style scoped>
   main{margin-top:15vh;}
+
 </style>
