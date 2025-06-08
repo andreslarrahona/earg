@@ -151,6 +151,9 @@ const perfiles = [
     </header>
 
     <section class="article-section">
+      <figure class="article-inline-image">
+        <img src="@/assets/images/fotos/17.jpg" alt="Fotografías de mediciones geodésicas" />
+      </figure>
       <p>
         Este programa se inició en 1984 con la participación en una campaña de
         mediciones Transit propuesta por la Facultad de Ciencias Astronómicas y
@@ -180,9 +183,7 @@ const perfiles = [
         reemplazado por POSGAR 07 en Tierra del Fuego.
       </p>
 
-      <figure class="article-inline-image">
-        <img src="@/assets/images/fotos/17.jpg" alt="Fotografías de mediciones geodésicas" />
-      </figure>
+      
 
       <p>
         La EARG remide regularmente esta red a los efectos de estudiar su

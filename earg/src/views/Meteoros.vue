@@ -40,6 +40,9 @@ onUnmounted(() => {
     </header>
 
     <section class="article-section">
+      <figure class="article-inline-image">
+        <img src="@/assets/images/meteoros/meteoros.jpg" alt="Lluvia de estrellas" />
+      </figure>
       <p>
 La Estación Astronómica Río Grande (EARG) es conocida por su monitoreo constante de la rotación de la Tierra y el movimiento del polo. También ha trascendido por sus precisas mediciones de la deformación de la corteza relacionada con el sistema de fallas Magallanes-Fagnano y por los estudios de sismicidad mediante su red de estaciones sismológicas.
       </p>

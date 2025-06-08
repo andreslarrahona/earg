@@ -4,7 +4,7 @@
 </script>
 <template>
   <section class="contenedor">
-  <article class="geodesy-article">
+  <article class="movimiento-article">
     <header class="article-header">
       <h1 class="article-title">El movimiento del Polo</h1>
       <h2 class="article-subtitle">y la Estación Astronómica Río Grande</h2>
@@ -12,6 +12,9 @@
     </header>
 
     <section class="article-section">
+      <figure class="article-inline-image">
+        <img src="@/assets/images/polo/astrolabio.webp" alt="Mediciones estelares" style="height:350px;width:auto;"/>
+      </figure>
       <h3>1. Un poco de historia</h3>
       <p>
         Desde que los hombres comenzaron a diferenciarse de los animales, 
@@ -161,9 +164,7 @@
 
       <figure class="article-inline-image">
         <img src="@/assets/images/polo.jpg" alt="Movimiento del polo" />
-        <figcaption>
-En esta secuencia se ve la trayectoria del primer meteoro fotografiado con la cámara especial instalada en la EARG, durante la noche del 2 al 3 de agosto de 2011. Gentileza de Marilia Samara and Robert Mitchell, SouthWest Research Institute.
-        </figcaption>
+        
       </figure>
       <p>
         A fines del siglo pasado se detectaron variaciones en la latitud del Observatorio de Berlín.
@@ -230,6 +231,12 @@ En esta secuencia se ve la trayectoria del primer meteoro fotografiado con la c�
         En particular, se ha encontrado un frenado progresivo en la velocidad de rotación terrestre
         que es de unos 2 milésimos de segundo por siglo.
       </p>
+      <figure class="article-inline-image">
+        <img src="@/assets/images/lod.webp" alt="Length of day" />
+        <figcaption>
+Variaciones del largo del día (LOD / Length of day) publicadas por IERS.
+        </figcaption>
+      </figure>
 
       <p>
         En estos casos se verifica una situación semejante a la descripta para el movimiento del polo.
@@ -253,11 +260,7 @@ En esta secuencia se ve la trayectoria del primer meteoro fotografiado con la c�
 
       <p>
         (La historia continúa con las técnicas modernas…)
-      </p>
-
-      
-      http://earg.fcaglp.unlp.edu.ar/astrolabio/polar.htm
-      
+      </p>      
 
     </section>
   </article>
@@ -275,7 +278,7 @@ En esta secuencia se ve la trayectoria del primer meteoro fotografiado con la c�
   background-color: $color-1; /* Puedes aplicarlo también al html para mayor seguridad */
 
 }
-.geodesy-article {
+.movimiento-article {
   font-family: $font-main;
   line-height: 1.6;
   color: #333;
@@ -288,7 +291,9 @@ En esta secuencia se ve la trayectoria del primer meteoro fotografiado con la c�
   @media (max-width: 768px) {
     padding: 15px;
   }
+ 
 }
+ ul, ol{margin:2em;}
 
 /* Article Header */
 .article-header {
@@ -334,6 +339,7 @@ En esta secuencia se ve la trayectoria del primer meteoro fotografiado con la c�
     margin-bottom: 1em;
     font-size: 1.1em; /* Slightly larger text for readability */
     color: #444;
+    text-indent:1em;
 
     i {
       font-style: italic;
@@ -348,7 +354,7 @@ En esta secuencia se ve la trayectoria del primer meteoro fotografiado con la c�
 
 /* Inline Image Styling */
 .article-inline-image {
-  margin: 40px -20px; /* Pulls image slightly out to the sides if padding is present on .geodesy-article */
+  margin: 40px -20px; /* Pulls image slightly out to the sides if padding is present on .movimiento-article */
   display: block; /* Ensures it takes full width */
   text-align: center; /* Centers the image */
   max-width: unset; /* Override any max-width from parent */
@@ -378,67 +384,6 @@ En esta secuencia se ve la trayectoria del primer meteoro fotografiado con la c�
     }
   }
 }
-
-/* Team Section */
-.team-section {
-  margin-top: 40px;
-  padding: 30px;
-  background-color: #f8f8f8; /* Light background for team section */
-  border-left: 5px solid $color-2; /* A distinct border */
-  border-radius: 0 8px 8px 0; /* Rounded corners on one side */
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
-
-  .section-title {
-    font-family: "Helvetica Neue", Arial, sans-serif;
-    font-size: 2em;
-    color: #2c3e50;
-    margin-bottom: 25px;
-    text-align: center;
-  }
-
-  .team-members {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 30px;
-    margin-bottom: 30px;
-
-    .team-group {
-      background-color: #eaf3f8;
-      padding: 15px 20px;
-      border-radius: 5px;
-      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
-      text-align: center;
-      min-width: 150px;
-
-      strong {
-        display: block;
-        font-size: 1.2em;
-        color: #34495e;
-        margin-bottom: 10px;
-      }
-
-      ul {
-        list-style: none;
-        padding: 0;
-        margin: 0;
-
-        li {
-          font-size: 0.95em;
-          color: #555;
-          margin-bottom: 5px;
-        }
-      }
-    }
-  }
-
-  p {
-    font-size: 1.05em;
-    color: #555;
-  }
-}
-
-/* General text elements */
 h2 {
   font-family: "Helvetica Neue", Arial, sans-serif;
   font-size: 2.2em;
@@ -458,251 +403,5 @@ p {
   font-size: 1.1em;
 }
 
-#img-geodesia {
-        align-content: center;
-        text-align: center;
-        align-self: center;
-        img {
-          width: 25vw;
-          min-width: 350px;
-          object-fit: contain;
-        }
-      }
-      #mapa-geodesia {
-        height: 100%;
-        max-height: 200px;
-        overflow: hidden;
-        align-self: center;
-        width: calc(25vw - 100px);
-        min-width: 350px;
-        align-content: center;
-        text-align: center;
-        border-radius: 8px;
-        position: relative;
-        cursor: pointer;
-        margin: 0;
 
-        &:hover p {
-          scale: 0.95;
-        }
-        &:hover img {
-          opacity: 0.3;
-        }
-        #sombra-geodesia {
-          position: absolute;
-          width: 100%;
-          left: 0;
-          height: 100%;
-          border-radius: 8px;
-          background-color: rgba(231, 223, 220, 0.3);
-          color: $color-6;
-          font-size: 30px;
-          text-justify: center;
-          align-content: center;
-          z-index: 10;
-
-          p {
-            transition: all 0.3s;
-          }
-        }
-        img {
-          max-height: 100%;
-          width: 25vw;
-          min-width: 350px;
-          border-radius: 8px;
-          opacity: 0.7;
-          transition: all 0.3s;
-          object-fit: cover;
-          object-position: 0 -20px;
-        }
-      }
-    #cont-perfiles {
-          display: flex;
-          justify-content: right;
-          margin:0;
-          font-size:0.8em;
-          select {
-            -webkit-appearance: none;
-            -moz-appearance: none;
-            appearance: none;
-            background-color: transparent;
-            border: none; 
-            padding: 8px 12px 8px 0; 
-            font-size: 1em;
-            color: $color-4;
-            cursor: pointer;
-            outline: none;
-            text-align: left; 
-            width: auto;
-            min-width: 160px; 
-            max-width: 100%;
-            font-family:$font-main;
-            background-image: url('data:image/svg+xml;utf8,<svg fill="black" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/><path d="M0 0h24v24H0z" fill="none"/></svg>');
-            background-repeat: no-repeat;
-            background-position: right 0px center;
-            background-size: 16px;
-            padding-left:1em;
-            margin-top:1em;
-            &:hover {
-              color: $color-6; 
-            }
-            &:focus {
-              border-bottom: 1px solid $color-6;
-            }
-            option {
-              background-color: $color-4;
-              color: $color-3;
-              padding: 8px 15px;
-              font-size: 1em;
-              border-bottom: 1px solid $color-6;
-              &:hover {
-                background-color: $color-7; // Un verde ligeramente más oscuro al pasar el mouse
-              }
-              &:checked {
-                background-color: $color-6; // Fondo verde oscuro para la opción seleccionada
-              }
-            }
-            option[disabled] {
-              background-color: transparent; // O un gris muy oscuro si el select se abre sobre un fondo oscuro
-              color: rgba(0, 0, 0, 0.7); // Un blanco más tenue
-              font-weight: bold; // Opcional: hacer el texto más grueso
-              padding-right: 0;
-            }
-          }
-        }
-        .redes-section{
-          .cont-logos-geodesia{
-            display:flex;
-            padding-right:1em;
-            width:100%;
-            justify-content:center;
-            gap:1em;
-            div{
-              border-radius:50%;
-              height:130px;
-              width:130px;
-              box-shadow:5px 5px 10px rgba(0, 0, 0, 0.4);
-              display:flex;
-              align-items:center;
-              justify-content:center;
-              transition:all 0.3s ease;
-              cursor:pointer;
-              img{
-                max-height:75%;
-                max-width:75%;
-                opacity:0.9;
-                transition:all 0.3s ease;
-              }
-              &:hover{
-                scale:0.95;
-                img{opacity:1;}
-              }
-            }
-            
-          }
-          ul{
-              list-style:none;
-              margin-left:1em;
-              &>li a{
-                text-decoration:none;
-                &:hover{
-                  color:$color-6;
-                  font-weight:bold;
-                  
-                }
-                &:focus, &:link, &:visited{
-                  color:$color-4;
-                }
-              }
-            }
-        }
-        #cont-fagnano{
-            width:100vw;
-            position:relative;
-            height: 0; /* Necesario cuando uso padding-bottom para controlar la altura */
-            padding-bottom: 42.26vw; /* Valor para mantener la relación de aspecto */  
-            overflow: hidden;
-            margin-left:calc((-100vw + 800px)/2);
-            margin-top:2em;
-            @include margin-y(2em);
-            @media (max-width: 820px) {
-                margin-left:-1.8em;
-            }
-            @media (max-width:600px){
-              .pin{display:none;}
-            }
-
-            
-            
-            .popup-imagen {
-              position: fixed;
-              width:50%;
-              height:40%;
-              max-width:500px;
-              max-height:40%;
-              border-radius:8px;
-              padding: 0;
-              z-index: 10;
-              box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.4);
-            }
-
-            .popup-imagen img {
-              width: 100%;
-              height:100%;
-              object-fit:cover;
-              border-radius:8px;
-
-            }
-            #fagnano{
-              width:100%;
-              position:absolute;
-              top:0;
-              left:0;
-            }
-            .pin {
-              position: absolute;
-              width: 40px;
-              height: 40px;
-              background-color: $color-1;
-              transform: translate(-50%, -50%) rotate(45deg); 
-              box-shadow: 5px 5px 10px $color-4;
-              cursor: pointer;
-              transition: all 0.3s;
-              outline: 1px solid $color-6; /* El borde que quieres ver */
-              outline-offset: -3px;
-              opacity:0.4;
-              &:hover {
-                margin-top: -0.7em;
-                box-shadow: 0.7em 0.7em 10px $color-4;
-                opacity:1;
-              }
-              p {
-                font-style: italic;
-                transform: rotate(-45deg);
-                text-align: center;
-                width: 50%;
-                justify-self: center;
-                font-weight: bold;
-                position:absolute;
-                top:0.4em;
-                left:0.6em;
-                color:$color-6;
-                opacity:0.9;
-              }
-            }
-            #pin-1 {top: 35%;left: 5%;}
-            #pin-2 {top: 40%;left: 22%;}
-            #pin-3 {top: 32%;left: 50%;}
-            #pin-4 {top: 38%;left: 64%;}
-            #pin-5 {top: 34%;left: 79%;}
-            #pin-6 {top: 43%;left: 80%;}
-            #pin-7 {top: 56%;left: 66%;}
-            #pin-8 {top: 53%;left: 54%;}
-            #pin-9 {top: 53%;left: 33%;}
-            #pin-10 {top: 56%;left: 24%;}
-            #pin-11 {top: 54%;left: 18%;}
-            #pin-12 {top: 49%;left: 10%;}
-            
-          }
-        
 </style>

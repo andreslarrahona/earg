@@ -4,6 +4,8 @@ import { ref, onMounted, onBeforeUnmount } from 'vue'
 const lineasMenu = ref(true)
 const extensionMenu = ref(true)
 const serviciosMenu = ref(true)
+const conversoresMenu = ref(false)
+const recursosMenu = ref(true)
 
 
 
@@ -13,6 +15,7 @@ const toggleLineasMenu = (event) => {
   // Cierra los otros menús cuando se abre este
   extensionMenu.value = true
   serviciosMenu.value = true
+  recursosMenu.value = true
 }
 
 const toggleExtensionMenu = (event) => {
@@ -21,6 +24,7 @@ const toggleExtensionMenu = (event) => {
   // Cierra los otros menús cuando se abre este
   lineasMenu.value = true
   serviciosMenu.value = true
+  recursosMenu.value = true
 }
 
 const toggleServiciosMenu = (event) => {
@@ -29,13 +33,34 @@ const toggleServiciosMenu = (event) => {
   // Cierra los otros menús cuando se abre este
   lineasMenu.value = true
   extensionMenu.value = true
+  recursosMenu.value = true
 }
+const toggleRecursosMenu = (event) => {
+  event.stopPropagation()
+  recursosMenu.value = !recursosMenu.value
+  // Cierra los otros menús cuando se abre este
+  lineasMenu.value = true
+  extensionMenu.value = true
+  serviciosMenu.value = true
+}
+const toggleConversoresMenu = (event) => {
+  event.stopPropagation()
+  conversoresMenu.value = !conversoresMenu.value
+  // Cierra los otros menús cuando se abre este
+  lineasMenu.value = true
+  extensionMenu.value = true
+  serviciosMenu.value = true
+
+}
+
 
 // Función para cerrar los menús si el clic es fuera
 const closeMenusOnClickOutside = (event) => {
   const lineasMenuElement = document.getElementById('lineas').closest('.lista-menu')
   const extensionMenuElement = document.getElementById('extension').closest('.lista-menu')
   const serviciosMenuElement = document.getElementById('servicios').closest('.lista-menu')
+  const recursosMenuElement = document.getElementById('recursos').closest('.lista-menu')
+
 
   if (lineasMenuElement && !lineasMenuElement.contains(event.target)) {
     lineasMenu.value = true
@@ -45,6 +70,9 @@ const closeMenusOnClickOutside = (event) => {
   }
   if (serviciosMenuElement && !serviciosMenuElement.contains(event.target)) {
     serviciosMenu.value = true
+  }
+  if (recursosMenuElement && !recursosMenuElement.contains(event.target)) {
+    recursosMenu.value = true
   }
 }
 
@@ -75,11 +103,11 @@ onBeforeUnmount(() => {
                         <router-link to="/Sismologia"><li value="sismologia">Sismología</li></router-link>
                         <router-link to="/Atmosfera"><li value="atmosfera">Atmósfera superior</li></router-link>
                         <router-link to="/Astronomia"><li value="astronomia">Astronomía</li></router-link>
-                        <router-link to="/Geodesia"><li value="geodesia">Geodesia</li></router-link>
+                        <router-link to="/Geodesia"><li value="geodesia">Geodesia <span class="ok">OK</span></li></router-link>
                         <router-link to="/Metrologia"><li value="meteorologia">Meteorología</li></router-link>
-                        <router-link to="/Meteoros"><li value="meteoros">Meteoros</li></router-link>
+                        <router-link to="/Meteoros"><li value="meteoros">Meteoros <span class="ok">OK</span></li></router-link>
                         <router-link to="/Geofisica"><li value="geofisica">Geofísica aplicada</li></router-link>
-                        <router-link to="/Movimiento"><li value="movimiento">Movimiento del polo</li></router-link>
+                        <router-link to="/Movimiento"><li value="movimiento">Movimiento del polo <span class="ok">OK</span></li></router-link>
                     </ul>
                 </div>
             
@@ -88,26 +116,46 @@ onBeforeUnmount(() => {
                     <p id="extension">Extension <span style="font-size:0.8em;padding-left:0.2em;">∨</span></p>
                     <ul :class="{'extension-menu': extensionMenu}">
                         <li value="" disabled selected hidden></li>
-                        <router-link to="/Sismologia"><li value="sismologia">Sismología</li></router-link>
+                        <!-- <router-link to="/Sismologia"><li value="sismologia">Sismología</li></router-link>
                         <router-link to="/Atmosfera"><li value="atmosfera">Atmósfera superior</li></router-link>
                         <router-link to="/Astronomia"><li value="astronomia">Astronomía</li></router-link>
                         <router-link to="/Geodesia"><li value="geodesia">Geodesia</li></router-link>
                         <router-link to="/Metrologia"><li value="meteorologia">Meteorología</li></router-link>
                         <router-link to="/Meteoros"><li value="meteoros">Meteoros</li></router-link>
-                        <router-link to="/Geofisica"><li value="geofisica">Geofísica aplicada</li></router-link>
+                        <router-link to="/Geofisica"><li value="geofisica">Geofísica aplicada</li></router-link> -->
                     </ul>
                 </div>
                 <div class="lista-menu" @click="toggleServiciosMenu">
                     <p id="servicios">Servicios <span style="font-size:0.8em;padding-left:0.2em;">∨</span></p>
                     <ul :class="{'servicios-menu': serviciosMenu}">
                         <li value="" disabled selected hidden></li>
-                        <router-link to="/Sismologia"><li value="sismologia">Sismología</li></router-link>
+                        <!-- <router-link to="/Sismologia"><li value="sismologia">Sismología</li></router-link>
                         <router-link to="/Atmosfera"><li value="atmosfera">Atmósfera superior</li></router-link>
                         <router-link to="/Astronomia"><li value="astronomia">Astronomía</li></router-link>
                         <router-link to="/Geodesia"><li value="geodesia">Geodesia</li></router-link>
                         <router-link to="/Metrologia"><li value="meteorologia">Meteorología</li></router-link>
                         <router-link to="/Meteoros"><li value="meteoros">Meteoros</li></router-link>
-                        <router-link to="/Geofisica"><li value="geofisica">Geofísica aplicada</li></router-link>
+                        <router-link to="/Geofisica"><li value="geofisica">Geofísica aplicada</li></router-link> -->
+                    </ul>
+                </div>
+                <div class="lista-menu" @click="toggleRecursosMenu">
+                    <p id="recursos">Recursos <span style="font-size:0.8em;padding-left:0.2em;">∨</span></p>
+                    <ul :class="{'recursos-menu': recursosMenu}">
+                        <li value="" disabled selected hidden></li>
+                        <router-link to="/AtlasEstelar"><li value="atlasEstelar">Atlas estelar</li></router-link>
+                        <li @click="toggleConversoresMenu">Conversores  <span style="font-size:0.8em;padding-left:0.2em;">∨</span></li>
+                        <router-link to="/CoordenadasGeodesicas"><li value="coordenadasGeodesicas" v-if="conversoresMenu">Transformación de coordenadas geodésicas</li></router-link>
+                        <router-link to="/GeocentricasGeograficas"><li value="geocentricasGeograficas" v-if="conversoresMenu">Cartesianas geocéntricas a geográficas</li></router-link>
+
+<!-- 
+                        <div class="lista-menu" @click="toggleConversoresMenu">
+                            <p id="conversores">Conversores <span style="font-size:0.8em;padding-left:0.2em;">∨</span></p>
+                            <ul :class="{'conversores-menu': conversoresMenu}">
+                                <li value="" disabled selected hidden></li>
+                                <router-link to="/CoordenadasGeodesicas"><li value="coordenadasGeodesicas">Transformación de coordenadas geodésicas</li></router-link>
+                                <router-link to="/GeocentricasGeograficas"><li value="geocentricasGeograficas">Cartesianas geocéntricas a geográficas</li></router-link>
+                            </ul>
+                        </div> -->
                     </ul>
                 </div>
             
@@ -190,7 +238,7 @@ header {
             .lista-menu{
                 position:relative;
                 cursor:pointer;
-                .lineas-menu, .extension-menu, .servicios-menu{
+                .lineas-menu, .extension-menu, .servicios-menu, .recursos-menu, .conversores-menu{
                     display:none;
                 }
                 
@@ -205,6 +253,7 @@ header {
                     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
                     list-style:none;
                     z-index:10;
+                    
 
                     li{
                         padding:0.5em 1em;

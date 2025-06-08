@@ -12,7 +12,7 @@ $font-semibold: 600;
 $font-bold: 700;
 $breakpoint-mobile: 768px;
 
-
+.ok{font-size:0.8em;color:white;font-weight:bold;background-color:green;padding:0.2em;}
 
 @mixin padding-x($value) {
   padding-left: $value;
