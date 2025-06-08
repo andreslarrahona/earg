@@ -63,6 +63,12 @@
         Astronómico de la Universidad de Besanzón (Francia), para instalar en la localidad 
         de Río Grande un instrumento astronómico de origen francés: El Astrolabio de Danjon.
       </p>
+      <figure class="article-inline-image">
+        <img src="@/assets/images/fotos/astrolabio.jpg" alt="Astrolabio de Danjon" />
+        <figcaption>
+          Astrolabio de Danjon
+        </figcaption>
+      </figure>
       <p>
         El interés del proyecto y sus posibles derivaciones futuras, así como la necesidad de
         financiar la construcción de la Estación y asegurar su funcionamiento por largo tiempo,
@@ -76,6 +82,12 @@
         posiciones de las estrellas del hemisferio austral, y aportar observaciones para la 
         determinación de la rotación de la Tierra.
       </p>
+      <figure class="article-inline-image">
+        <img src="@/assets/images/fotos/danjon.jpg" alt="Astrolabio de Danjon en Río Grande" />
+        <figcaption>
+          Astrolabio de Danjon OPL 01 en Tierra del Fuego
+        </figcaption>
+      </figure>
 
 
       <h3>2. Los sistemas de referencia terrestres y celestes</h3>
@@ -125,7 +137,7 @@
       <p>
         El más conocido de estos sistemas terrestres es el que permite posicionar un punto en base al sistema de meridianos y paralelos.
       </p>
-
+      
       <p>
         Cada meridiano representa una "Longitud" determinada, mientras los paralelos indican la "Latitud" del lugar.
       </p>
