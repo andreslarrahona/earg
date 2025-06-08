@@ -79,6 +79,7 @@ onBeforeUnmount(() => {
                         <router-link to="/Metrologia"><li value="meteorologia">Meteorología</li></router-link>
                         <router-link to="/Meteoros"><li value="meteoros">Meteoros</li></router-link>
                         <router-link to="/Geofisica"><li value="geofisica">Geofísica aplicada</li></router-link>
+                        <router-link to="/Movimiento"><li value="movimiento">Movimiento del polo</li></router-link>
                     </ul>
                 </div>
             
