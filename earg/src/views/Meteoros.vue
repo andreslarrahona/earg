@@ -1,5 +1,7 @@
 <script setup>
 import { ref, onMounted, onUnmounted } from 'vue';
+const isMounted = ref(false)
+
 import image01 from '@/assets/images/meteoros/01.png';
 import image02 from '@/assets/images/meteoros/02.png';
 import image03 from '@/assets/images/meteoros/03.png';
@@ -21,17 +23,21 @@ const changeImage = () => {
 
 onMounted(() => {
   intervalId = setInterval(changeImage, 2000);
+  requestAnimationFrame(() => {
+      isMounted.value = true
+    })
 });
 
 onUnmounted(() => {
   if (intervalId) {
     clearInterval(intervalId);
   }
+  isMounted.value = false
 });
 
 </script>
 <template>
-  <section class="contenedor">
+  <section class="contenedor" :class="{ 'fade-in': isMounted }">
   <article class="geodesy-article">
     <header class="article-header">
       <h1 class="article-title">Meteoros</h1>
@@ -87,6 +93,15 @@ Para complementar estas mediciones, durante algunas semanas en agosto de 2011 se
 .contenedor{
   width:100vw;
   background-color: $color-1; /* Puedes aplicarlo también al html para mayor seguridad */
+  opacity: 0;
+  transform: translateY(10px);
+  transition: 
+    opacity 1s ease-out,
+    transform 0.7s ease-out;
+  &.fade-in {
+    opacity: 1;
+    transform: translateY(0);
+  }
 
 }
 .geodesy-article {

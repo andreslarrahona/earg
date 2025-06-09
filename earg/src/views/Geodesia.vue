@@ -1,5 +1,7 @@
 <script setup>
 import {ref, onMounted, onUnmounted} from 'vue';
+const isMounted = ref(false)
+
 import perfil1 from '@/assets/images/puntos/perfiles/perfil1.gif';
 import perfil2 from '@/assets/images/puntos/perfiles/perfil2.gif';
 import perfil3 from '@/assets/images/puntos/perfiles/perfil3.gif';
@@ -84,16 +86,18 @@ const handleKeydown = (event) => {
 
 onMounted(() => {
   document.addEventListener('click', handleClickOutside)
-    document.addEventListener('keydown', handleKeydown);
-
+  document.addEventListener('keydown', handleKeydown);
+  requestAnimationFrame(() => {
+      isMounted.value = true
+    })
 })
 
 onUnmounted(() => {
   document.removeEventListener('click', handleClickOutside)
-    document.addEventListener('keydown', handleKeydown);
+  document.addEventListener('keydown', handleKeydown);
+  isMounted.value = false
 
 })
-
 const perfilSeleccionado = ref('')
 const perfiles = [
   { id: 1, name: 'Perfil 1', url: perfil1, filename: 'perfil1.gif' },
@@ -134,7 +138,7 @@ const perfiles = [
 
 </script>
 <template>
-  <section class="contenedor">
+  <section class="contenedor" :class="{ 'fade-in': isMounted }">
   <article class="geodesy-article">
     <header class="article-header">
       <h1 class="article-title">Geodesia</h1>
@@ -368,6 +372,15 @@ const perfiles = [
 .contenedor{
   width:100vw;
   background-color: $color-1; /* Puedes aplicarlo también al html para mayor seguridad */
+  opacity: 0;
+  transform: translateY(10px);
+  transition: 
+    opacity 1s ease-out,
+    transform 0.7s ease-out;
+  &.fade-in {
+    opacity: 1;
+    transform: translateY(0);
+  }
 
 }
 .geodesy-article {
@@ -705,11 +718,13 @@ p {
               align-items:center;
               justify-content:center;
               transition:all 0.3s ease;
+              background-color:$color-3;
+              opacity:0.9;
               cursor:pointer;
               img{
                 max-height:75%;
                 max-width:75%;
-                opacity:0.9;
+                
                 transition:all 0.3s ease;
               }
               &:hover{

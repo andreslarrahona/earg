@@ -100,13 +100,13 @@ onBeforeUnmount(() => {
                     <p id="lineas">Líneas de trabajo <span style="font-size:0.8em;padding-left:0.2em;">∨</span></p>
                     <ul :class="{'lineas-menu': lineasMenu}">
                         <li value="" disabled selected hidden></li>
-                        <router-link to="/Sismologia"><li value="sismologia">Sismología</li></router-link>
-                        <router-link to="/Atmosfera"><li value="atmosfera">Atmósfera superior</li></router-link>
-                        <router-link to="/Astronomia"><li value="astronomia">Astronomía</li></router-link>
+                        <router-link to="/Sismologia"><li value="sismologia">Sismología <span class="ok">OK</span></li></router-link>
+                        <router-link to="/"><li value="atmosfera">Atmósfera superior</li></router-link>
+                        <router-link to="/"><li value="astronomia">Astronomía</li></router-link>
                         <router-link to="/Geodesia"><li value="geodesia">Geodesia <span class="ok">OK</span></li></router-link>
-                        <router-link to="/Metrologia"><li value="meteorologia">Meteorología</li></router-link>
+                        <router-link to="/"><li value="meteorologia">Meteorología</li></router-link>
                         <router-link to="/Meteoros"><li value="meteoros">Meteoros <span class="ok">OK</span></li></router-link>
-                        <router-link to="/Geofisica"><li value="geofisica">Geofísica aplicada</li></router-link>
+                        <router-link to="/"><li value="geofisica">Geofísica aplicada</li></router-link>
                         <router-link to="/Movimiento"><li value="movimiento">Movimiento del polo <span class="ok">OK</span></li></router-link>
                     </ul>
                 </div>
@@ -142,10 +142,10 @@ onBeforeUnmount(() => {
                     <p id="recursos">Recursos <span style="font-size:0.8em;padding-left:0.2em;">∨</span></p>
                     <ul :class="{'recursos-menu': recursosMenu}">
                         <li value="" disabled selected hidden></li>
-                        <router-link to="/AtlasEstelar"><li value="atlasEstelar">Atlas estelar</li></router-link>
+                        <router-link to="/"><li value="atlasEstelar">Atlas estelar</li></router-link>
                         <li @click="toggleConversoresMenu">Conversores  <span style="font-size:0.8em;padding-left:0.2em;">∨</span></li>
-                        <router-link to="/CoordenadasGeodesicas"><li value="coordenadasGeodesicas" v-if="conversoresMenu">Transformación de coordenadas geodésicas</li></router-link>
-                        <router-link to="/GeocentricasGeograficas"><li value="geocentricasGeograficas" v-if="conversoresMenu">Cartesianas geocéntricas a geográficas</li></router-link>
+                        <router-link to="/"><li value="coordenadasGeodesicas" v-if="conversoresMenu">Transformación de coordenadas geodésicas</li></router-link>
+                        <router-link to="/"><li value="geocentricasGeograficas" v-if="conversoresMenu">Cartesianas geocéntricas a geográficas</li></router-link>
 
 <!-- 
                         <div class="lista-menu" @click="toggleConversoresMenu">

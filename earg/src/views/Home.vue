@@ -1,6 +1,20 @@
 <script setup>
 import 'vue3-carousel/carousel.css'
 import { Carousel, Slide, Navigation } from 'vue3-carousel'
+import { ref, onMounted, onUnmounted } from 'vue'
+
+const isMounted = ref(false)
+
+onMounted(() => {
+  // Forzar un reflow antes de aplicar la animación
+  requestAnimationFrame(() => {
+    isMounted.value = true
+  })
+})
+
+onUnmounted(() => {
+  isMounted.value = false
+})
 
  const images = Array.from({ length: 8 }, (_, i) => ({
    id: i + 1,
@@ -20,7 +34,7 @@ const config = {
 </script>
 
 <template>
-  <section>
+  <section class="home" :class="{ 'fade-in': isMounted }">
   <div class="carousel">
     <Carousel v-bind="config">
       <Slide v-for="image in images" :key="image.id">
@@ -34,22 +48,22 @@ const config = {
   </div>
   <div class="cont-btn-home">
     <div>
-      <router-link to="/Meteorologia" class="btn btn-primary">
-        <img src="@/assets/images/iconos/weather.png" alt="Meteorología">
+      <router-link to="/" class="btn btn-primary">
+        <img src="@/assets/images/iconos/weather.png" alt="Link a Meteorología">
         <p>Información Meteorológica</p>
         <i class="fa-solid fa-arrow-right"></i>
       </router-link>
     </div>
     <div>
       <router-link to="/Sismologia" class="btn btn-primary">
-        <img src="@/assets/images/iconos/sismos.png" alt="Meteorología">
+        <img src="@/assets/images/iconos/sismos.png" alt="Link a Sismología">
         <p>Información sobre Sismos</p>
         <i class="fa-solid fa-arrow-right"></i>
       </router-link>
     </div>
     <div>
-      <router-link to="/Meteorologia" class="btn btn-primary lastcard ">
-        <img src="@/assets/images/iconos/estacion.png" alt="Historia">
+      <router-link to="/" class="btn btn-primary lastcard ">
+        <img src="@/assets/images/iconos/estacion.png" alt="Link a Historia">
         <p>Conocé nuestra Historia</p>
         <i class="fa-solid fa-arrow-right"></i>
       </router-link>
@@ -61,12 +75,12 @@ const config = {
         <div class="sombra-card"></div>
         <p>Modelo de geoide</p>
       </router-link>    
-      <router-link to="/Sitios" class="card card1">
+      <router-link to="/" class="card card1">
         <img src="@/assets/images/cadic.jpg">
         <div class="sombra-card"></div>
         <p>Sitios de interés</p>
       </router-link> 
-      <router-link to="/Didactico" class="card card1">
+      <router-link to="/" class="card card1">
         <img src="@/assets/images/escuelas.jpg">
         <div class="sombra-card"></div>
         <p>Material didáctico para escuelas</p>
@@ -77,6 +91,17 @@ const config = {
 
 <style scoped lang="scss">
 @import "@/assets/styles/main.scss";
+.home{
+  opacity: 0;
+  transform: translateY(10px);
+  transition: 
+    opacity 1s ease-out,
+    transform 0.7s ease-out;
+  &.fade-in {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 section{
   display:flex;
   flex-direction:column;

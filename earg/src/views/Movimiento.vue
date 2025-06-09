@@ -1,13 +1,25 @@
 <script setup>
+import { ref, onMounted, onUnmounted } from 'vue'
+const isMounted = ref(false)
 
+onMounted(() => {
+  // Forzar un reflow antes de aplicar la animación
+  requestAnimationFrame(() => {
+    isMounted.value = true
+  })
+})
+
+onUnmounted(() => {
+  isMounted.value = false
+})
 
 </script>
 <template>
-  <section class="contenedor">
+  <section class="contenedor" :class="{ 'fade-in': isMounted }">
   <article class="movimiento-article">
     <header class="article-header">
       <h1 class="article-title">El movimiento del Polo</h1>
-      <h2 class="article-subtitle">y la Estación Astronómica Río Grande</h2>
+      <h2 class="article-subtitle">Determinación de tiempo, latitud y dinámica terrestre</h2>
       
     </header>
 
@@ -276,6 +288,15 @@ Variaciones del largo del día (LOD / Length of day) publicadas por IERS.
 .contenedor{
   width:100vw;
   background-color: $color-1; /* Puedes aplicarlo también al html para mayor seguridad */
+  opacity: 0;
+  transform: translateY(10px);
+  transition: 
+    opacity 1s ease-out,
+    transform 0.7s ease-out;
+  &.fade-in {
+    opacity: 1;
+    transform: translateY(0);
+  }
 
 }
 .movimiento-article {
