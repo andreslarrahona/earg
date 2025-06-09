@@ -1,0 +1,60 @@
+Pasar Geofísica aplicada de Lineas de trabajo a Servicios
+
+En Geodesia,
+- Geodinámica (Ajuste glacio-isostático (rebote posglaciar))
+    -- En Tierra del Fuego
+    -- En Santa Cruz
+- Gravimetría
+    -- modelo de geoide / campañas historicas
+    -- gravPatagonia
+    -- Reflectometría GNSS
+    Enlace a campañas historicas de gravimetria
+- Estaciones permanentes
+- Marcos de referencia
+- Astrolabio y movimiento del polo
+- Campañas históricas
+    -- Programa de Geodesia Satelitaria
+
+
+En Recursos, agregar: 
+- Calculador de altura geoidal TDA TDF (enlace al IGN oficial)
+- Salida y puesta del sol
+- Salida y puesta de la luna
+- Fases de la luna
+- Material didáctico
+- Publicaciones
+
+
+
+En Sismología,
+- Estaciones
+- Sismicidad en Tierra del Fuego (mapa de sismicidad y formación)
+- Registros de sismos:
+    INPRES
+    CENTRO SISMOLOGICO NACIONAL DE CHILE
+    USGS DE EEUU
+    EMSS de europa
+
+
+En Atmosfera Superior, (textos con imagenes)
+- Coral Lidar, con link con la DLR (de alemania) mide perfiles de temperatura de 20 a 90 km de altura 
+- Mapeador Avanzado de la temperatura de la Mesósfera (Universidad de UTAH USU)
+- Vientos de la mesósfera (Radar de meteoros) Mismo mapeador pero mide otra cosa. 
+
+Cambiar Meteoros por Astronomía de meteoros
+- Lluvias de meteoros
+- (Meteoros esporádicos). Estudio de la distribución del polvo planetario 
+Enlaces a NASA y CUA en ambos
+
+Eliminar Astronomía
+
+En Publicaciones, filtrar por temática
+
+
+Meteorologia
+- Actual
+- Boletin
+- Estadistico
+
+
+En Meteorologia, dejar una página para embeber
