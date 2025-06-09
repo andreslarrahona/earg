@@ -1,4 +1,8 @@
-Pasar Geofísica aplicada de Lineas de trabajo a Servicios
+Calculador de altura geoidal:
+    tda tdf: http://astrogeo3.fcaglp.unlp.edu.ar/tdaTDF/
+    (enlace a la pagina IGN oficial)
+
+
 
 En Geodesia,
 - Geodinámica (Ajuste glacio-isostático (rebote posglaciar))
@@ -11,18 +15,9 @@ En Geodesia,
     Enlace a campañas historicas de gravimetria
 - Estaciones permanentes
 - Marcos de referencia
-- Astrolabio y movimiento del polo
-- Campañas históricas
+- Trabajos y campañas históricas
     -- Programa de Geodesia Satelitaria
-
-
-En Recursos, agregar: 
-- Calculador de altura geoidal TDA TDF (enlace al IGN oficial)
-- Salida y puesta del sol
-- Salida y puesta de la luna
-- Fases de la luna
-- Material didáctico
-- Publicaciones
+    -- Astrolabio y movimiento del polo
 
 
 
@@ -37,24 +32,32 @@ En Sismología,
 
 
 En Atmosfera Superior, (textos con imagenes)
-- Coral Lidar, con link con la DLR (de alemania) mide perfiles de temperatura de 20 a 90 km de altura 
-- Mapeador Avanzado de la temperatura de la Mesósfera (Universidad de UTAH USU)
-- Vientos de la mesósfera (Radar de meteoros) Mismo mapeador pero mide otra cosa. 
+- Monitoreo atmosférico con CORAL
+    link con la DLR (de alemania) 
+    mide perfiles de temperatura de 20 a 90 km de altura
+    enlace: https://extern05.pa.op.dlr.de/coral/
+- Mapeo avanzado de la temperatura mesosférica
+    dispositivo: AMTM de la universidad de Utah (USU) 
+    chatgpt muestra data y fotos
+- Vientos de la mesósfera
+    (Radar de meteoros)
+    Mismo mapeador pero mide otra cosa. 
 
-Cambiar Meteoros por Astronomía de meteoros
+
+
+En Atmósfera de Meteoros, (textos con imagenes)
 - Lluvias de meteoros
-- (Meteoros esporádicos). Estudio de la distribución del polvo planetario 
+- Meteoros esporádicos.
+    Estudio de la distribución del polvo planetario 
 Enlaces a NASA y CUA en ambos
 
-Eliminar Astronomía
+
+
 
 En Publicaciones, filtrar por temática
 
 
-Meteorologia
+En Meteorologia, dejar una página para embeber
 - Actual
 - Boletin
 - Estadistico
-
-
-En Meteorologia, dejar una página para embeber
