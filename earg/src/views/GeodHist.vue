@@ -9,18 +9,23 @@ onUnmounted(() => {isMounted.value = false})
     <section class="contenedor" :class="{ 'fade-in': isMounted }">
         <header>
             <p class="breadcrumbs"><router-link to="/">Inicio</router-link> /
-            <router-link to="/Geodesia">Geodesia</router-link> / Geodinámica</p>
-            <h1>Geodinámica</h1>
+            <router-link to="/Geodesia">Geodesia</router-link> / Trabajos y campañas históricas</p>
+            <h1>Trabajos y campañas históricas</h1>
         </header>
         <div class="ppal-cards">
-            <router-link to="/GeodinTdf" class="card">
+            <router-link to="/" class="card">
                 <img src="@/assets/images/default.webp" alt="Descripcion imagen 1">
-                <h3>Geodinámica en Tierra del Fuego</h3>
+                <h3>Programa de Geodesia Satelitaria</h3>
                 <p>Descripcion ....</p>
             </router-link>
-            <router-link to="/GeodinSC" class="card">
+            <router-link to="/" class="card">
                 <img src="@/assets/images/default.webp" alt="Descripcion imagen 2">
-                <h3>Geodinámica en Santa Cruz</h3>
+                <h3>Astrolabio y movimiento del polo</h3>
+                <p>Descripcion .....</p>
+            </router-link>
+            <router-link to="/" class="card">
+                <img src="@/assets/images/default.webp" alt="Descripcion imagen 3">
+                <h3>Campañas historicas de gravimetria</h3>
                 <p>Descripcion .....</p>
             </router-link>
         </div>

@@ -72,17 +72,17 @@ $breakpoint-mobile: 768px;
 }
 
 .breadcrumbs{
-  z-index:10;
-  font-size:0.8em;
-  color:$color-5;
-  padding-top:1em;
-  padding-bottom:0.5em;
-  text-align:center;
-  opacity:0.9;
-  position:absolute;
-  top:15vh;
-  left:2em;
-  color:$color-2;
+  z-index:10 !important;
+  font-size:0.8em !important;
+  color:$color-5 !important;
+  padding-top:1em !important;
+  padding-bottom:0.5em !important;
+  text-align:center !important;
+  opacity:0.9 !important;
+  position:fixed !important;
+  top:15vh !important;
+  left:2em !important;
+  color:$color-2 !important;
   a{
       color:$color-2;
       font-weight:bold;

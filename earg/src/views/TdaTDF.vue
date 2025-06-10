@@ -8,6 +8,7 @@ onUnmounted(() => {isMounted.value = false})
 <template>
     <section class="contenedor" :class="{ 'fade-in': isMounted }">
         <header>
+            <p class="breadcrumbs"><router-link to="/">Inicio</router-link> / Calculador de altura geoidal</p>
             <h1>Calculador de altura geoidal</h1>
             <p>Aplicación tdaTDF del Grupo de Geodesia Espacial y Astrometría de la UNLP</p>
         </header>

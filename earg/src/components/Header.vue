@@ -101,9 +101,9 @@ onBeforeUnmount(() => {
                     <ul :class="{'lineas-menu': lineasMenu}">
                         <li value="" disabled selected hidden></li>
                         <router-link to="/Sismologia"><li value="sismologia">Sismología</li></router-link>
-                        <router-link to="/"><li value="atmosfera">Atmósfera superior</li></router-link>
+                        <router-link to=""><li value="atmosfera">Atmósfera superior</li></router-link>
                         <router-link to="/Geodesia"><li value="geodesia">Geodesia</li></router-link>
-                        <router-link to="/"><li value="meteorologia">Meteorología</li></router-link>
+                        <router-link to=""><li value="meteorologia">Meteorología</li></router-link>
                         <router-link to="/Meteoros"><li value="meteoros">Astronomía de Meteoros</li></router-link>
                     </ul>
                 </div>
@@ -126,23 +126,23 @@ onBeforeUnmount(() => {
                     <p id="servicios">Servicios <span style="font-size:0.8em;padding-left:0.2em;">∨</span></p>
                     <ul :class="{'servicios-menu': serviciosMenu}">
                         <li value="" disabled selected hidden></li>
-                        <router-link to="/"><li value="geofisica">Geofísica aplicada</li></router-link>
+                        <router-link to=""><li value="geofisica">Geofísica aplicada</li></router-link>
                     </ul>
                 </div>
                 <div class="lista-menu" @click="toggleRecursosMenu">
                     <p id="recursos">Recursos <span style="font-size:0.8em;padding-left:0.2em;">∨</span></p>
                     <ul :class="{'recursos-menu': recursosMenu}">
                         <li value="" disabled selected hidden></li>
-                        <router-link to="/"><li value="didactico">Material didáctico</li></router-link>
+                        <router-link to=""><li value="didactico">Material didáctico</li></router-link>
                         <router-link to="/TdaTDF"><li value="tdaTdf">Calculador de altura geoidal <span class="ok">OK</span></li></router-link>
-                        <router-link to="/"><li value="sol">Salida y puesta del sol</li></router-link>
-                        <router-link to="/"><li value="salidaLuna">Salida y puesta de la luna</li></router-link>
-                        <router-link to="/"><li value="fasesLuna">Fases de la luna</li></router-link>
-                        <router-link to="/"><li value="publicaciones">Publicaciones</li></router-link>
+                        <router-link to=""><li value="sol">Salida y puesta del sol</li></router-link>
+                        <router-link to=""><li value="salidaLuna">Salida y puesta de la luna</li></router-link>
+                        <router-link to=""><li value="fasesLuna">Fases de la luna</li></router-link>
+                        <router-link to=""><li value="publicaciones">Publicaciones</li></router-link>
                         <li @click="toggleConversoresMenu">Conversores  <span style="font-size:0.8em;padding-left:0.2em;">∨</span></li>
-                        <router-link to="/"><li value="coordenadasGeodesicas" v-if="conversoresMenu">Transformación de coordenadas geodésicas</li></router-link>
-                        <router-link to="/"><li value="geocentricasGeograficas" v-if="conversoresMenu">Cartesianas geocéntricas a geográficas</li></router-link>
-                        <router-link to="/"><li value="gkgeo" v-if="conversoresMenu">Gauss-Krüger / UTM a geográficas</li></router-link>
+                        <router-link to=""><li value="coordenadasGeodesicas" v-if="conversoresMenu">Transformación de coordenadas geodésicas</li></router-link>
+                        <router-link to=""><li value="geocentricasGeograficas" v-if="conversoresMenu">Cartesianas geocéntricas a geográficas</li></router-link>
+                        <router-link to=""><li value="gkgeo" v-if="conversoresMenu">Gauss-Krüger / UTM a geográficas</li></router-link>
 
                     </ul>
                 </div>
