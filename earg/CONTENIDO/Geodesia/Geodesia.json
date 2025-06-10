@@ -1,0 +1,34 @@
+{
+  "secciones": [
+    {
+      "titulo": "Geodinámica",
+      "descripcion": "Registros relacionados con el ascenso de la corteza terrestre tras el retroceso de los hielos. Información de variaciones en altura vinculadas al ajuste isostático en zonas previamente glaciadas.",
+      "imagen": "glacio.png",
+      "enlace": "/Geodinamica"
+    },
+    {
+      "titulo": "Gravimetria",
+      "descripcion": "Estudio y medición del campo gravitacional terrestre; mediciones de reflexiones terrestres de señales GNSS y campañas para la determinación de forma y estructura interna de la Tierra",
+      "imagen": "gravimetria.jpg",
+      "enlace": "/Gravimetria"
+    },
+    {
+      "titulo": "Estaciones permanentes",
+      "descripcion": "Equipos de monitoreo continuo delaposición terrestre y la obtención de datos astronómicos y geoespaciales, contribuyendo a la actualización de marcos de referencia geodésicos nacionales e internacionales.",
+      "imagen": "20180710_123307.jpg",
+      "enlace": ""
+    },
+    {
+      "titulo": "Marcos de referencia",
+      "descripcion": "Sistemas de coordenadas que permiten determinar posiciones precisas sobre la superficie terrestre, esenciales para la geodesia, cartografía, navegación y diversas aplicaciones científicas.",
+      "imagen": "marcos.jpg",
+      "enlace": ""
+    },
+    {
+      "titulo": "Trabajos y campañas históricas",
+      "descripcion": "Aportes al desarrollo y consolidación del marco geodésico nacional sobre redes geodésicas fijas y móviles, permitiendo la integración de la red nacional con iniciativas regionales e internacionales.",
+      "imagen": "IMG_20190416_161430.jpg",
+      "enlace": "/GeodHist"
+    }
+  ]
+}

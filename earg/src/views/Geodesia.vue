@@ -1,9 +1,11 @@
 <script setup>
 import { ref, onMounted, onUnmounted } from 'vue'
+import contenido from '/CONTENIDO/Geodesia/Geodesia.json'
+const secciones = contenido.secciones
 const isMounted = ref(false)
 onMounted(() => {requestAnimationFrame(() => {isMounted.value = true})})
 onUnmounted(() => {isMounted.value = false})
-
+onMounted(()=> console.log(secciones))
 </script>
 <template>
     <section class="contenedor" :class="{ 'fade-in': isMounted }">
@@ -12,40 +14,15 @@ onUnmounted(() => {isMounted.value = false})
             <h1>Geodesia</h1>
         </header>
         <div class="ppal-cards">
-            <router-link to="/Geodinamica" class="card">
-                <img src="@/assets/images/geodesia/glacio.png" alt="Ajuste glacio-isostático">
-                <h3>Geodinámica</h3>
-                <p>Registros relacionados con el ascenso de la corteza terrestre tras el 
-                    retroceso de los hielos. Información de variaciones en altura vinculadas 
-                    al ajuste isostático en zonas previamente glaciadas.</p>
-            </router-link>
-            <router-link to="/Gravimetria" class="card">
-                <img src="@/assets/images/geodesia/gravimetria.jpg" alt="Gravimetría">
-                <h3>Gravimetría</h3>
-                <p>Estudio y medición del campo gravitacional terrestre; mediciones de reflexiones
-                    terrestres de señales GNSS y campañas para la determinación de forma y estructura 
-                    interna de la Tierra</p>
-            </router-link>
-            <router-link to="" class="card" style="cursor:not-allowed !important;">
-                <img src="@/assets/images/fotos/20180710_123307.jpg" alt="Estaciones geodésicas permanentes">
-                <h3>Estaciones permanentes</h3>
-                <p>Equipos de monitoreo continuo delaposición terrestre y la obtención de datos 
-                    astronómicos y geoespaciales, contribuyendo a la actualización de marcos de referencia 
-                    geodésicos nacionales e internacionales.</p>
-            </router-link>
-            <router-link to="" class="card" style="cursor:not-allowed !important;">
-                <img src="@/assets/images/geodesia/marcos.jpg" alt="Marcos de referencia geodésica ">
-                <h3>Marcos de referencia</h3>
-                <p>Sistemas de coordenadas que permiten determinar posiciones precisas sobre la 
-                    superficie terrestre, esenciales para la geodesia, cartografía, navegación y 
-                    diversas aplicaciones científicas. </p>
-            </router-link>
-            <router-link to="/GeodHist" class="card">
-                <img src="@/assets/images/fotos/IMG_20190416_161430.jpg" alt="Campañas geodésicas">
-                <h3>Trabajos y campañas históricas</h3>
-                <p>Aportes al desarrollo y consolidación del marco geodésico nacional sobre redes 
-                    geodésicas fijas y móviles, permitiendo la integración de la red nacional con 
-                    iniciativas regionales e internacionales.</p>
+
+            <router-link 
+                v-for="card in secciones" 
+                class="card" 
+                :to="card.enlace"
+            >
+                <img :src="`/CONTENIDO/Geodesia/${card.imagen}`" :alt="card.titulo">
+                <h3>{{ card.titulo }}</h3>
+                <p>{{ card.descripcion }}</p>
             </router-link>
         </div>
 

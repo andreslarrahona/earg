@@ -29,9 +29,6 @@ onUnmounted(() => {isMounted.value = false})
                 <p>Descripcion .....</p>
             </router-link>
         </div>
-
-        
-        
     </section>
 </template>
 
