@@ -8,12 +8,15 @@ onUnmounted(() => {isMounted.value = false})
 <template>
     <section class="contenedor" :class="{ 'fade-in': isMounted }">
         <header>
-            <h1>Geodesia</h1>
-        </header>
+                <router-link to="/Geodesia"><h1>Geodesia</h1></router-link>
+                <h1 style="color:gray;margin-left:1em; margin-right:1em">></h1>
+                <h1 class="color-6">Geodinámica</h1>
+        </header> 
         <div class="ppal-cards">
             <div class="card">
                 <img src="@/assets/images/geodesia/glacio.png" alt="Ajuste glacio-isostático">
                 <h3>Geodinámica</h3>
+
                 <p>Registros relacionados con el ascenso de la corteza terrestre tras el 
                     retroceso de los hielos. Información de variaciones en altura vinculadas 
                     al ajuste isostático en zonas previamente glaciadas.</p>
@@ -63,6 +66,8 @@ onUnmounted(() => {isMounted.value = false})
     header{
         border-bottom:solid 2px gray;
         height:15vh;
+        display:flex;
+        justify-content:center;
         h1{
             font-size:2em;
             color:$color-2;
@@ -70,6 +75,13 @@ onUnmounted(() => {isMounted.value = false})
             padding-bottom:0.5em;
             text-align:center;
             opacity:0.9;
+            
+        }
+        a{
+            text-decoration:none !important;
+            &:hover{
+                color:$color-6 !important;
+            }
         }
     }
     .ppal-cards {
