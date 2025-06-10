@@ -1,0 +1,23 @@
+{
+  "titulo": "Sismología",
+  "secciones": [
+    {
+      "titulo": "Estaciones sismológicas",
+      "descripcion": "Red de estaciones sismológicas que monitorean la actividad sísmica en Tierra del Fuego, contribuyendo a la detección y análisis de terremotos y otros fenómenos sísmicos.",
+      "imagen": "estaciones.jpg",
+      "enlace": "/SismoEstaciones"
+    },
+    {
+      "titulo": "Sismicidad en Tierra del Fuego",
+      "descripcion": "Estudio de los movimientos sísmicos en Tierra del Fuego, incluyendo mapa de sismicidad, características y el análisis de datos sísmicos para comprender mejor la región.",
+      "imagen": "estaciones.jpg",
+      "enlace": ""
+    },
+    {
+      "titulo": "Registros sísmicos",
+      "descripcion": "Datos históricos y actuales de eventos sísmicos, incluyendo magnitudes, localizaciones y tiempos de ocurrencia, para el análisis y la investigación de la actividad sísmica en la región.",
+      "imagen": "estaciones.jpg",
+      "enlace": ""
+    }
+  ]
+}

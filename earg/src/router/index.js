@@ -10,6 +10,7 @@ import Geodesia from '@/views/Geodesia.vue';
 import Meteoros from '@/views/Meteoros.vue';
 import Astrolabio from '@/views/Astrolabio.vue';
 import Sismologia from '@/views/Sismologia.vue';
+    import SismoEstaciones from '@/views/SismoEstaciones.vue';
 import TdaTDF from '@/views/TdaTDF.vue';
 
 const routes = [
@@ -23,6 +24,7 @@ const routes = [
     {path: '/Meteoros', name: 'Meteoros', component: Meteoros},
     {path: '/Astrolabio', name: 'Astrolabio', component: Astrolabio},
     {path: '/Sismologia', name: 'Sismologia', component: Sismologia},
+        {path: '/SismoEstaciones', name: 'SismoEstaciones', component: SismoEstaciones},
     {path: '/TdaTDF', name: 'TdaTDF', component: TdaTDF},
 
 ]

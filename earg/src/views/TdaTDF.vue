@@ -1,5 +1,6 @@
 <script setup>
 import { ref, onMounted, onUnmounted } from 'vue'
+import contenido from '/CONTENIDO/Recursos/Calculador de altura geoidal/Calculador de altura geoidal.json'
 const isMounted = ref(false)
 onMounted(() => {requestAnimationFrame(() => {isMounted.value = true})})
 onUnmounted(() => {isMounted.value = false})
@@ -8,9 +9,9 @@ onUnmounted(() => {isMounted.value = false})
 <template>
     <section class="contenedor" :class="{ 'fade-in': isMounted }">
         <header>
-            <p class="breadcrumbs"><router-link to="/">Inicio</router-link> / Calculador de altura geoidal</p>
-            <h1>Calculador de altura geoidal</h1>
-            <p>Aplicación tdaTDF del Grupo de Geodesia Espacial y Astrometría de la UNLP</p>
+            <p class="breadcrumbs"><router-link to="/">Inicio</router-link> / {{contenido.titulo}}</p>
+            <h1>{{contenido.titulo}}</h1>
+            <p>{{contenido.descripcion}}</p>
         </header>
         <iframe
             src="http://astrogeo3.fcaglp.unlp.edu.ar/tdaTDF/"

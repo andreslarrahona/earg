@@ -1,17 +1,17 @@
 <script setup>
 import { ref, onMounted, onUnmounted } from 'vue'
-import contenido from '/CONTENIDO/Geodesia/Geodesia.json'
+import contenido from '/CONTENIDO/Lineas de trabajo/Geodesia/Geodesia.json'
 const secciones = contenido.secciones
 const isMounted = ref(false)
 onMounted(() => {requestAnimationFrame(() => {isMounted.value = true})})
 onUnmounted(() => {isMounted.value = false})
-onMounted(()=> console.log(secciones))
+
 </script>
 <template>
     <section class="contenedor" :class="{ 'fade-in': isMounted }">
         <header>
-            <p class="breadcrumbs"><router-link to="/">Inicio</router-link> / Geodesia</p>
-            <h1>Geodesia</h1>
+            <p class="breadcrumbs"><router-link to="/">Inicio</router-link> / {{contenido.titulo}}</p>
+            <h1>{{contenido.titulo}}</h1>
         </header>
         <div class="ppal-cards">
 
@@ -20,14 +20,11 @@ onMounted(()=> console.log(secciones))
                 class="card" 
                 :to="card.enlace"
             >
-                <img :src="`/CONTENIDO/Geodesia/${card.imagen}`" :alt="card.titulo">
+                <img :src="`/CONTENIDO/Lineas de trabajo/Geodesia/${card.imagen}`" :alt="card.titulo">
                 <h3>{{ card.titulo }}</h3>
                 <p>{{ card.descripcion }}</p>
             </router-link>
         </div>
-
-        
-        
     </section>
 </template>
 
