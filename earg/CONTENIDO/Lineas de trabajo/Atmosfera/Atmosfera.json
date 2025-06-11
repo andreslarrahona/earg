@@ -1,0 +1,23 @@
+{
+  "titulo": "Atmósfera superior",
+  "secciones": [
+    {
+      "titulo": "Monitoreo atmosférico con CORAL",
+      "descripcion": "Sistema de monitoreo atmosférico que mide perfiles de temperatura desde 20 hasta 90 km de altura, proporcionando datos cruciales para el estudio de la atmósfera superior.",
+      "imagen": "default.webp",
+      "enlace": "/Coral"
+    },
+    {
+      "titulo": "Mapeo avanzado de la temperatura mesosférica",
+      "descripcion": "Caracterización de la mesósfera mediante mapeador avanzado de temperatura.",
+      "imagen": "default.webp",
+      "enlace": ""
+    },
+    {
+      "titulo": "Vientos de la mesósfera",
+      "descripcion": "Descripcion....",
+      "imagen": "default.webp",
+      "enlace": ""
+    }
+  ]
+}

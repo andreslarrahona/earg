@@ -1,6 +1,6 @@
 <script setup>
 import { ref, onMounted, onUnmounted } from 'vue'
-import contenido from '/CONTENIDO/Lineas de trabajo/Geodesia/Trabajos y campañas historicas/Trabajos.json'
+import contenido from '/CONTENIDO/Lineas de trabajo/Atmosfera/Atmosfera.json'
 const secciones = contenido.secciones
 const isMounted = ref(false)
 onMounted(() => {requestAnimationFrame(() => {isMounted.value = true})})
@@ -10,17 +10,17 @@ onUnmounted(() => {isMounted.value = false})
 <template>
     <section class="contenedor" :class="{ 'fade-in': isMounted }">
         <header>
-            <p class="breadcrumbs"><router-link to="/">Inicio</router-link> /
-            <router-link to="/Geodesia">Geodesia</router-link> / {{contenido.titulo}}</p>
+            <p class="breadcrumbs"><router-link to="/">Inicio</router-link> / {{contenido.titulo}}</p>
             <h1>{{contenido.titulo}}</h1>
         </header>
         <div class="ppal-cards">
+
             <router-link 
                 v-for="card in secciones" 
                 class="card" 
                 :to="card.enlace"
             >
-                <img :src="`/CONTENIDO/Lineas de trabajo/Geodesia/Trabajos y campañas historicas/${card.imagen}`" :alt="card.titulo">
+                <img :src="`/CONTENIDO/Lineas de trabajo/Atmosfera/${card.imagen}`" :alt="card.titulo">
                 <h3>{{ card.titulo }}</h3>
                 <p>{{ card.descripcion }}</p>
             </router-link>
@@ -59,8 +59,8 @@ onUnmounted(() => {isMounted.value = false})
         padding-top:1em;
         .card{
             height:auto;
-            max-height:60%;min-height:300px;
-            min-width: 300px;max-width:500px;
+            max-height:75%;min-height:350px;
+            min-width: 200px;max-width:300px;
         }
     }
 }

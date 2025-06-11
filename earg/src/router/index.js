@@ -6,7 +6,9 @@ import Geodesia from '@/views/Geodesia.vue';
         import GeodinSC from '@/views/GeodinSC.vue';
     import Gravimetria from '@/views/Gravimetria.vue';
     import Geodhist from '@/views/Geodhist.vue';
-
+        import Pgs from '@/views/Pgs.vue';
+import Atmosfera from '@/views/Atmosfera.vue';
+    import Coral from '@/views/Coral.vue';
 import Meteoros from '@/views/Meteoros.vue';
 import Astrolabio from '@/views/Astrolabio.vue';
 import Sismologia from '@/views/Sismologia.vue';
@@ -21,8 +23,11 @@ const routes = [
             {path: '/GeodinSC', name: 'GeodinSC', component: GeodinSC},
         {path: '/Gravimetria', name: 'Gravimetria', component: Gravimetria},
         {path: '/Geodhist', name: 'Geodhist', component: Geodhist},
+            {path: '/Pgs', name: 'Pgs', component: Pgs},
+            {path: '/Astrolabio', name: 'Astrolabio', component: Astrolabio},
     {path: '/Meteoros', name: 'Meteoros', component: Meteoros},
-    {path: '/Astrolabio', name: 'Astrolabio', component: Astrolabio},
+    {path: '/Atmosfera', name: 'Atmosfera', component: Atmosfera},
+        {path: '/Coral', name: 'Coral', component: Coral},
     {path: '/Sismologia', name: 'Sismologia', component: Sismologia},
         {path: '/SismoEstaciones', name: 'SismoEstaciones', component: SismoEstaciones},
     {path: '/TdaTDF', name: 'TdaTDF', component: TdaTDF},

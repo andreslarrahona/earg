@@ -51,7 +51,7 @@ onUnmounted(() => {isMounted.value = false})
     .ppal-cards {
         height:calc(100vh - 15vh - 17vh);
         display: flex;
-        justify-content: space-between;
+        justify-content: space-around;
         gap: 16px;
         width: calc(100% - 2em);
         flex-wrap: wrap;

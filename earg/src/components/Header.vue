@@ -101,7 +101,7 @@ onBeforeUnmount(() => {
                     <ul :class="{'lineas-menu': lineasMenu}">
                         <li value="" disabled selected hidden></li>
                         <router-link to="/Sismologia"><li value="sismologia">Sismología</li></router-link>
-                        <router-link to=""><li value="atmosfera">Atmósfera superior</li></router-link>
+                        <router-link to="/Atmosfera"><li value="atmosfera">Atmósfera superior</li></router-link>
                         <router-link to="/Geodesia"><li value="geodesia">Geodesia</li></router-link>
                         <router-link to=""><li value="meteorologia">Meteorología</li></router-link>
                         <router-link to="/Meteoros"><li value="meteoros">Astronomía de Meteoros</li></router-link>

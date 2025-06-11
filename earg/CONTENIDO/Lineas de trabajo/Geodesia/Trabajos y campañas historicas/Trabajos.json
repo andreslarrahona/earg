@@ -1,0 +1,23 @@
+{
+  "titulo": "Trabajos y campañas históricas",
+  "secciones": [
+    {
+      "titulo": "Programa de Geodesia Satelitaria",
+      "descripcion": "Descripcion...",
+      "imagen": "default.webp",
+      "enlace": "/Pgs"
+    },
+    {
+      "titulo": "Astrolabio y movimiento del polo",
+      "descripcion": "Descripcion...",
+      "imagen": "default.webp",
+      "enlace": "/Astrolabio"
+    },
+    {
+      "titulo": "Campañas históricas de gravimetría",
+      "descripcion": "Descripcion...",
+      "imagen": "default.webp",
+      "enlace": ""
+    }
+  ]
+}

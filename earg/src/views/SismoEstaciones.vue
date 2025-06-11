@@ -125,7 +125,7 @@ onUnmounted(() => {
 
       </section>
     </article>
-    <article class="side-section">
+    <!-- <article class="side-section">
       <div class="side-section-btn">
         <router-link to="/" class="btn btn-primary">
           <img src="@/assets/images/iconos/notas.png" alt="Link a Sismos">
@@ -134,7 +134,7 @@ onUnmounted(() => {
         </router-link>
       </div>
 
-    </article>
+    </article> -->
   </section>
 </template>
 
