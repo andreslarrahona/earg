@@ -92,7 +92,7 @@ onBeforeUnmount(() => {
 
 <header>
     <nav>
-        <router-link class="cont-logo" to="/"><img src="@/assets/images/logos/logo7.png"></router-link>
+        <router-link class="cont-logo" to="/"><img src="@/assets/images/logos/logo11.png"></router-link>
         <div>
             <router-link to="/"><p style="margin-right:1.5em;">Acerca de la EARG</p></router-link>
             
@@ -167,9 +167,11 @@ header {
     max-width:100vw;
     overflow-y:visible;
     // border-bottom:solid 3px $color-1;
-    background-image:
-        linear-gradient(to bottom, rgba(0,0,0,0), rgba(0,0,0,1)),
-        url('../assets/images/R.jpg');
+    background-color:rgba(25,25,25,1);
+    background-color:$color-1;
+    // background-image:
+    //     linear-gradient(to bottom, rgba(25,25,25,0), rgba(25,25,25,1)),
+    //     url('../assets/images/R.jpg');
     position:fixed;
     top:0;
     left:0;
@@ -196,7 +198,7 @@ header {
             // border:dotted red 1px;
             img{
                 max-height:100%;
-                opacity:0.9;
+                opacity:1;
             }
         }
 
@@ -215,7 +217,7 @@ header {
                 text-align:center;
                 cursor:pointer;
                 transition:all 0.2s;
-                color:$color-3;
+                color:$color-4;
                 // border:solid red 1px;
                 z-index:10;
                 &:hover{
