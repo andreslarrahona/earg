@@ -18,7 +18,7 @@ onUnmounted(() => {
 
  const images = Array.from({ length: 8 }, (_, i) => ({
    id: i + 1,
-   url: new URL(`../assets/images/fotos/${String(i+1).padStart(2,'0')}.jpg`, import.meta.url).href,
+   url: new URL(`../assets/images/fotos/carousel/${String(i+1).padStart(2,'0')}.jpg`, import.meta.url).href,
  }))
 
 
@@ -70,18 +70,18 @@ const config = {
     </div>
   </div>
   <div class="cont-mas-links">
-      <router-link to="/Geodesia" class="card card1">
-        <img src="@/assets/images/fotos/geodesia.jpg">
+      <router-link to="" class="card-home card1">
+        <img src="@/assets/images/luna.jpg">
         <div class="sombra-card"></div>
-        <p>Modelo de geoide</p>
+        <p>Calendario lunar</p>
       </router-link>    
-      <router-link to="/" class="card card1">
+      <router-link to="/" class="card-home card1">
         <img src="@/assets/images/cadic.jpg">
         <div class="sombra-card"></div>
         <p>Sitios de interés</p>
       </router-link> 
-      <router-link to="/" class="card card1">
-        <img src="@/assets/images/escuelas.jpg">
+      <router-link to="/" class="card-home card1">
+        <img src="@/assets/images/didactico.png">
         <div class="sombra-card"></div>
         <p>Material didáctico para escuelas</p>
       </router-link> 
@@ -105,17 +105,19 @@ const config = {
 section{
   display:flex;
   flex-direction:column;
-  margin-top:17vh;
+  margin-top:0;
 }
 
 .carousel {
   --vc-nav-background: rgba(255, 255, 255, 0.7);
   --vc-nav-border-radius: 100%;
-  height:66vh;
-  background-color:$color-4;
+  height:500px;
+  background-color:$color-1;
   color:$color-3;
-  padding-top:2vh;
-  padding-bottom:8vh;
+  padding-top:0;
+  padding-bottom:0;
+  
+
   
 
 }
@@ -125,6 +127,7 @@ section{
   width: 100%;
   height: 100%;
   object-fit: cover;
+  
 }
 
 .cont-btn-home{
@@ -138,7 +141,7 @@ section{
   background-color: $color-1;
   padding-bottom:0;
   position:relative;
-  margin-top:15vh;
+
 
   a{
     padding: 1em 2em;
@@ -193,21 +196,7 @@ section{
   align-items: center;
   padding:2em 0;
   background-color: $color-1;
-  position: relative; 
-  // &::before {
-  //     content: ""; // Necesario para pseudo-elementos
-  //     position: absolute;
-  //     top: 0;
-  //     left: 0;
-  //     width: 100%;
-  //     height: 100%;
-  //     background-image: url(../assets/images/trama2.png);
-  //     background-size: auto; // Opcional: ajusta la imagen para cubrir el área
-  //     background-repeat: repeat;
-  //     background-position: center; // Opcional: centra la imagen
-  //     opacity: 0.1; // La opacidad del 20%
-  //     z-index: 0; // Asegura que esté debajo del contenido del div
-  //   }
+  position: relative;
   
   a{
     padding: 1em 2em;
@@ -251,7 +240,7 @@ section{
   background-color:$color-1;
   position:relative;
   padding-bottom:1em;
-    .card{
+    .card-home{
     
     height:90%;
     width:300px;

@@ -92,7 +92,7 @@ onBeforeUnmount(() => {
 
 <header>
     <nav>
-        <router-link class="cont-logo" to="/"><img src="@/assets/images/logos/logo11.png"></router-link>
+        <router-link class="cont-logo" to="/"><img src="@/assets/images/logos/logo3.png"></router-link>
         <div>
             <router-link to="/"><p style="margin-right:1.5em;">Acerca de la EARG</p></router-link>
             
@@ -150,9 +150,9 @@ onBeforeUnmount(() => {
             <router-link to="/"><p class="btn btn-1">Contacto</p></router-link>
         </div>
     </nav>
-    <div class="cont-titulo-seccion"  v-if="$route.path === '/'">
+    <!-- <div class="cont-titulo-seccion"  v-if="$route.path === '/'">
         <img src="@/assets/images/logos/logo1.png">
-    </div>
+    </div> -->
   </header>
   
 </template>
@@ -162,23 +162,17 @@ onBeforeUnmount(() => {
 header {
     background:none;
     color:$color-3;
-    //height:35vh;
     width:100vw;
     max-width:100vw;
     overflow-y:visible;
-    // border-bottom:solid 3px $color-1;
-    background-color:rgba(25,25,25,1);
     background-color:$color-1;
-    // background-image:
-    //     linear-gradient(to bottom, rgba(25,25,25,0), rgba(25,25,25,1)),
-    //     url('../assets/images/R.jpg');
     position:fixed;
     top:0;
     left:0;
     z-index:100;
 
     nav{
-        height:15vh;
+        height:10vh;
         display:flex;
         justify-content:space-between;
         @include padding-x(5%);
@@ -190,14 +184,13 @@ header {
             max-height:90%;
             cursor:pointer;
             transition:all 0.3s;
-            
+            align-content:center;
+        
             &:hover{
                 scale:0.9;
             }
-
-            // border:dotted red 1px;
             img{
-                max-height:100%;
+                max-width:300px;
                 opacity:1;
             }
         }
@@ -217,8 +210,7 @@ header {
                 text-align:center;
                 cursor:pointer;
                 transition:all 0.2s;
-                color:$color-4;
-                // border:solid red 1px;
+                color:$color-2;
                 z-index:10;
                 &:hover{
                     text-shadow: 2px 2px 2px $color-1;
@@ -240,7 +232,7 @@ header {
                     background-color:$color-3;
                     color:$color-4;
                     padding:0;
-                    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+                    box-shadow: 0 4px 8px rgba(1, 47, 107, 0.2);
                     list-style:none;
                     z-index:10;
                     
@@ -249,9 +241,9 @@ header {
                         padding:0.5em 1em;
                         cursor:pointer;
                         font-size:0.8em;
-                        color:$color-4;
+                        color:$color-2;
                         &:hover{
-                            background-color:$color-4;
+                            background-color:$color-2;
                             color:$color-3;
                         }
                     }

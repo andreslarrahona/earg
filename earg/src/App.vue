@@ -13,6 +13,6 @@ import Footer from '@/components/Footer.vue'
 </template>
 
 <style scoped>
-  main{margin-top:15vh;}
+  main{margin-top:10vh;}
 
 </style>
