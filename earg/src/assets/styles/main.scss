@@ -79,16 +79,16 @@ $breakpoint-mobile: 768px;
   text-align:center !important;
   opacity:0.9 !important;
   position:fixed !important;
-  top:20vh !important;
+  top:10vh !important;
   left:2em !important;
-  color:$color-3 !important;
+  color:gray !important;
   a{
-      color:$color-3;
+      color:gray;
       font-weight:bold;
       text-decoration:none;
       cursor:pointer;
       &:hover{
-          color:$color-6 !important;
+          color:$color-3 !important;
       }
   }
 }
