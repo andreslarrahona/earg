@@ -1,6 +1,6 @@
 <script setup>
 import { ref, onMounted, onUnmounted } from 'vue'
-import contenido from '/CONTENIDO/Lineas de trabajo/Astronomía de Meteoros/Astronomía de meteoros.json'
+import contenido from '/CONTENIDO/Lineas de trabajo/Astronomia de meteoros/Astronomia de meteoros.json'
 const secciones = contenido.secciones
 const isMounted = ref(false)
 onMounted(() => {requestAnimationFrame(() => {isMounted.value = true})})
@@ -20,7 +20,7 @@ onUnmounted(() => {isMounted.value = false})
                 class="card" 
                 :to="card.enlace"
             >
-                <img :src="`/CONTENIDO/Lineas de trabajo/Astronomía de Meteoros/${card.imagen}`" :alt="card.titulo">
+                <img :src="`/CONTENIDO/Lineas de trabajo/Astronomia de meteoros/${card.imagen}`" :alt="card.titulo">
                 <h3>{{ card.titulo }}</h3>
                 <p>{{ card.descripcion }}</p>
             </router-link>
