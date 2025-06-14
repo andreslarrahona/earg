@@ -9,7 +9,7 @@ onUnmounted(() => {isMounted.value = false})
 <template>
     <section class="contenedor" :class="{ 'fade-in': isMounted }">
         <header>
-            <p class="breadcrumbs"><router-link to="/">Inicio</router-link> / {{contenido.titulo}}</p>
+            <p class="breadcrumbs"><router-link to="/">Inicio</router-link> / <router-link to="/Atmosfera">Atmósfera superior</router-link> / {{contenido.titulo}}</p>
             
         </header>
         <div class="cont-iframe">

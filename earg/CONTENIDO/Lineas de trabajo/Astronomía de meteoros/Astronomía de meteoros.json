@@ -1,0 +1,17 @@
+{
+  "titulo": "Astronomía de meteoros",
+  "secciones": [
+    {
+      "titulo": "Meteoros esporádicos",
+      "descripcion": "Estudio de los meteoros esporádicos que ingresan a la atmósfera terrestre, incluyendo su origen, composición y características de su trayectoria.",
+      "imagen": "meteoros.jpg",
+      "enlace": "/MeteorosEsporadicos"
+    },
+    {
+      "titulo": "Lluvias de meteoros",
+      "descripcion": "Investigación de las lluvias de meteoros, sus orígenes, períodos de actividad y características de las trayectorias de los meteoros durante estos eventos.",
+      "imagen": "lluvia.png",
+      "enlace": "/LluviasMeteoros"
+    }
+  ]
+}

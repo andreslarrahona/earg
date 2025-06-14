@@ -147,7 +147,7 @@ onBeforeUnmount(() => {
                     </ul>
                 </div>
             
-            <router-link to="/"><p class="btn btn-1">Contacto</p></router-link>
+            <!-- <router-link to="/"><p class="btn btn-1">Contacto</p></router-link> -->
         </div>
     </nav>
     <!-- <div class="cont-titulo-seccion"  v-if="$route.path === '/'">

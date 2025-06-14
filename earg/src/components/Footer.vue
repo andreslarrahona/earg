@@ -24,7 +24,7 @@ defineProps({
 
   <footer  :class="{ 'fade-in': isMounted }">
     <div class="cont-mapa">
-      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d13087.667099321738!2d-57.929862956591805!3d-34.90853801761888!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95a2e6114f9ded65%3A0xf88e608aca2a1c2f!2sCalle+118!5e0!3m2!1ses!2sar!4v1436974024536"
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4989.728003116654!2d-67.7512594897972!3d-53.786900351694314!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xbc4b1535fc65a2d9%3A0x5d1dce7e7ab6c1f8!2sEstaci%C3%B3n%20Astron%C3%B3mica%20R%C3%ADo%20Grande!5e0!3m2!1ses!2sar!4v1749868798876!5m2!1ses!2sar"
               width="280"
               height="380"
               frameborder="0"
@@ -112,8 +112,7 @@ footer{
     display: flex;
 
     iframe{
-          margin:auto 5vw;
-
+      margin:auto 5vw;
       width:250px;
       height:250px;
       border-radius:50%;
@@ -174,7 +173,6 @@ footer{
           font-size:0.7em;
           width:100%;
           transition:all 0.3s ease;
-          margin-left:1em;
           cursor:pointer;
           &:hover{
             color:$color-3;
@@ -193,7 +191,7 @@ footer{
           font-size:0.9em;
         }
         .i1{
-          margin:0.5em;
+          margin:0.5em 0;
           font-weight:bold;
           
         }
